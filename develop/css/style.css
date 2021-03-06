@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: #222421;
+    /* display: flex;
+    flex-direction: column; */
+    flex-shrink: 3;
+    height: 100%;
+}
+
+header{
+    background: #D6D6D6;
+}
+
+header div.header_wrapper{
+    height: 125px;
+    padding: 40px 15px 0 15px;
+}
+
+#big_header_text{
+    color: #02263E;
+    font-size: 35px;
+    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+}
+#sm_header_text{
+    color: #02263E;
+    font-size: 16px;
+    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+}
+
+main{
+    height: 100%;
+    padding: 0 15px 10px 10px;
+}
+
+div.row{
+    /* height: 100%; */
+}
+
+div.mission_wrapper{
+    display: inline-flex;
+    height: 150px;
+    padding: 0 20px 20px 0;
+}
+
+.mission_header_wrapper{
+    height: fit-content; 
+    margin: 0;
+    padding: 20px 10px;
+    /* position: relative;
+    top: 50px;
+    right: 20px; */
+    /* transform: rotate(-90deg); */
+    width: fit-content;
+}
+
+.mission_header{
+    color: #C6EAC7;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+
+}
+
+.mission_text_wrapper{
+    margin: 0;
+    width: 75%;
+    /* position: relative;
+    left: 73px;
+    bottom: 50px; */
+}
+
+.mission_text{
+    color: #C6EAC7;
+    font-size: 14px;
+}
+
+.search_bar_wrapper{
+    background: #02263E;
+    border: 5px solid #222421;
+    display: flex;
+    /* flex-wrap: nowrap;
+    position: relative;
+    top: 30px; */
+    height: 85px;
+    padding: 0 20px 0 0;
+    width: 100%;
+}
+
+.search_bar_text_wrapper{
+    padding: 30px 0 25px 10px;
+    width: 155px;
+}
+
+.search_bar_text{
+    color: #D6D6D6;
+    font-size: 15px;
+}
+
+/* form.search_form,
+div.input-group{
+    padding: 10px 10px;
+}
+
+form.search_form{
+    display: inline-flex;
+    flex-direction: row;
+} */
+
+/* div.input-group{
+    display: flex;
+    flex-wrap: nowrap;
+} */
+
+/* input.input{
+    padding: 0;
+    width: 100%;
+    height: 40px;
+}
+
+input[type=text] {
+    font-size: 18px;
+} */
+
+.custom-btn{
+     /* background:  */
+     border: 0.5px solid #d6d6d6b8;
+    color: #D6D6D6;
+    font-size: 18px;
+ }
+
+.custom-btn:hover {
+  color: #C6EAC7;
+}
+
+.travel_advisory_container{
+    background: #D6D6D6;
+    border-top: 10px solid #222421;
+    border-bottom: 10px solid #222421;
+    border-right: 5px solid #222421;
+    border-left: 5px solid #222421;
+    height: 85px;
+}
+
+.travel_advisory_warning{
+    padding: 5px 50px;
+    align-content: center;
+}
+
+.travel_advisory_text{
+    color: #5B100B;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 15px 30px;
+    margin: 0;
+    align-content: center;
+}
+
+.appreciation_box_wrapper{
+    background-image: url(../../assets/images/frontline_03.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background_img_screen{
+    background-color: #00000095;
+    width: 100%;
+}
+
+.appreciation_text_wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 3;
+    padding: 50px 20px;
+    height: 250px;
+}
+
+.appreciation_text{
+    display: flex;
+    /* flex-wrap: nowrap; */
+    font-size: 35px;
+    color: #CFBDAF;
+    margin: 0;
+    height: 50px;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+#app_text_top{
+    font-size: 30px;
+    font-weight: 500;
+    /* position: relative; */
+    padding: 0 35px;
+    width: 350px;
+}
+
+#app_text_bottom{
+    height: 40px;
+    width: 400px;
+    font-weight: 600;
+    /* position: relative; */
+    /* bottom: 30px; */
+    padding: 0 20px;
+    font-size: 30px;
+}
