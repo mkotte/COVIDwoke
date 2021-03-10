@@ -3,17 +3,12 @@ let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
 let stateAbbrv = ["AK",	"AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT","WA", "WI", "WV"];
 let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 
-
-
-
-
-
 //function grabbing data
 function grabData(){
 	fetch(stateUrl).then((response) => {
 		return response.json()
 	}).then((data) => {
-		console.log(data)
+		// console.log(data)
 
 		return data.find((el) => el.state === "AK");
 
@@ -63,10 +58,42 @@ function grabData(){
 		return response.json();
 	}).then((data) => {
 		// console.log(data)
-		return data.filter((el) => el.state === "AK").filter((el) => el.county === "Haines Borough");
+		return data.filter((el) => el.state === "OH").filter((el) => el.county === "Franklin County");
 		}).then((dataObj) =>{
-		// console.log(dataObj)
+			console.log(dataObj)
+		
+			let countyTotalCases = dataObj[0].actuals.cases;
+			console.log('County totalCases '+ countyTotalCases );
+			let countyTotalDeaths = dataObj[0].actuals.deaths;
+			console.log('County totalDeaths ' + countyTotalDeaths);
+			//daily cases per 100k
+			let countyDailyCases = dataObj[0].actuals.newCases;
+			console.log('County dailyCases ' + countyDailyCases);
 
+			//infection rate rounded up to hundreths
+			let countyInfectionRate = (dataObj[0].metrics.infectionRate).toFixed(2);
+			console.log('County infectionRate ' + countyInfectionRate);
+
+
+			//vaccination stats should display based on population
+			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
+			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
+			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
+			console.log('County vaccinesInitiated ' + countyVaccinesInitiated) 
+			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
+			console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
+
+			//ICU beds
+			let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity
+			console.log('County ICUCapacity ' + countyICUCapacity);
+			let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid
+			console.log('County ICUCovidUsage ' + countyICUCovidUsage);
+			let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal
+			console.log('County ICUTotalUsage ' + countyICUTotalUsage);
+
+			//riskLevel
+			let countyRiskLevel = dataObj[0].riskLevels.overall
+			console.log('County Risk Level ' + countyRiskLevel)
 
 		})
 	)
@@ -74,51 +101,51 @@ function grabData(){
 
 grabData();
 
+
+
 //testing api abilities / formats
-function apiTesting(){
-	let api= 'https://api.covidactnow.org/v2/state/OH.json?apiKey=' + apiKey;
-	let api2= 'https://api.covidactnow.org/v2/state/OH.timeseries.json?apiKey=' + apiKey;
-	let api3= 'https://api.covidactnow.org/v2/county/OH.json?apiKey=' + apiKey;
-	fetch(api).then((response) => {
-		return response.json()
-	}).then((data) => {
-		console.log(data)
-	}).then(fetch(api2).then((response) => {
-	return response.json()
-	}).then((data) => {
-	console.log(data)
-	})).then(fetch(api3).then((response) => {
-	return response.json()
-	}).then((data) => {
-	console.log(data)
+// function apiTesting(){
+// 	let api= 'https://api.covidactnow.org/v2/state/OH.json?apiKey=' + apiKey;
+// 	let api2= 'https://api.covidactnow.org/v2/state/OH.timeseries.json?apiKey=' + apiKey;
+// 	let api3= 'https://api.covidactnow.org/v2/county/OH.json?apiKey=' + apiKey;
+// 	fetch(api).then((response) => {
+// 		return response.json()
+// 	}).then((data) => {
+// 		console.log(data)
+// 	}).then(fetch(api2).then((response) => {
+// 	return response.json()
+// 	}).then((data) => {
+// 	console.log(data)
+// 	})).then(fetch(api3).then((response) => {
+// 	return response.json()
+// 	}).then((data) => {
+// 	console.log(data)
 	
-	//county map to iterate through each dropdown option
-	let counties = data.map((countyData) => countyData.county);
-	console.log(counties)
+// 	//county map to iterate through each dropdown option
+// 	let counties = data.map((countyData) => countyData.county);
+// 	console.log(counties)
 
- 	}
-))
-};
-apiTesting();
+//  	}
+// ))
+// };
+// apiTesting();
 
-function renderCountyOptions(){
-	let countyApi= 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
-	fetch(countyApi).then((response) => {
-		return response.json()
-	}).then((data) => {
-		let counties = data.map((countyData) => countyData.county);
+// function renderCountyOptions(){
+// 	let countyApi= 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
+// 	fetch(countyApi).then((response) => {
+// 		return response.json()
+// 	}).then((data) => {
+// 		let counties = data.map((countyData) => countyData.county);
 		
-		let countyDropdown = document.getElementById(county-dropdown);
-		// declare append a tag options for the dropdown
-		for (let i = 0; i < data.length; i++) 
-			let 
+// 		let countyDropdown = document.getElementById(county-dropdown);
+// 		// declare append a tag options for the dropdown
+// 		for (let i = 0; i < data.length; i++){ 
+// 			console.log(counties)
+// 		}
+// 	})
+// }
 
-		console.log(counties)
-	}).
-	
-}
-
-renderCountyOptions();
+// renderCountyOptions();
 
 
 
