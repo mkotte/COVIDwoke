@@ -5,6 +5,9 @@ let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 
 
 
+
+
+
 //function grabbing data
 function grabData(){
 	fetch(stateUrl).then((response) => {
@@ -80,17 +83,50 @@ function apiTesting(){
 		return response.json()
 	}).then((data) => {
 		console.log(data)
-}).then(fetch(api2).then((response) => {
+	}).then(fetch(api2).then((response) => {
 	return response.json()
-}).then((data) => {
+	}).then((data) => {
 	console.log(data)
-})).then(fetch(api3).then((response) => {
+	})).then(fetch(api3).then((response) => {
 	return response.json()
-}).then((data) => {
+	}).then((data) => {
 	console.log(data)
-}))
+	
+	//county map to iterate through each dropdown option
+	let counties = data.map((countyData) => countyData.county);
+	console.log(counties)
+
+ 	}
+))
 };
 apiTesting();
+
+function renderCountyOptions(){
+	let countyApi= 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
+	fetch(countyApi).then((response) => {
+		return response.json()
+	}).then((data) => {
+		let counties = data.map((countyData) => countyData.county);
+		
+		let countyDropdown = document.getElementById(county-dropdown);
+		// declare append a tag options for the dropdown
+		for (let i = 0; i < data.length; i++) 
+			let 
+
+		console.log(counties)
+	}).
+	
+}
+
+renderCountyOptions();
+
+
+
+
+
+
+
+
 
 
 
@@ -106,6 +142,7 @@ apiTesting();
 
 //TODO: psuedo-coding;
 // Start the html index page and the modals
+
 //TODO: Figure out how to display the options for different counties based on state selected in the modal's dropdowns (.map, onChange(etc), )
 // yt vid for chart.js pi chart for icu beds + css divs on page for risk level
 // Find API including counties then use for loop to append options to form (select in bootstrap)
@@ -115,12 +152,7 @@ apiTesting();
 
 // Determine which statistics to use from the API's and how to request information
 // Append information to the results page
-
-
 // footer of pages add names / links to github + linkedin
-
-
-
 
 
 // TODO: Project Plan
@@ -143,19 +175,3 @@ $('#search-modal').on('show.bs.modal', function (event) {
 	modal.find('.modal-title').text('Search ' + countyState)
 	modal.find('.modal-body input').val(countyState)
   })
-  
-  // 
-  const settings = {
-	  "async": true,
-	  "crossDomain": true,
-	  "url": "https://hotels-com-free.p.rapidapi.com/suggest/v1.7/json?query=San%20Francisco&locale=en_US",
-	  "method": "GET",
-	  "headers": {
-		  "x-rapidapi-key": "81ca9f80d1msh56ba1defc30f345p119d44jsn1b9d7d11291d",
-		  "x-rapidapi-host": "hotels-com-free.p.rapidapi.com"
-	  }
-  };
-  
-  $.ajax(settings).done(function (response) {
-	  console.log(response);
-  });
