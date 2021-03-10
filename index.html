@@ -9,7 +9,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="develop/css/style.css" />
-    <title>Covid Travel Advisor // Hot Zone</title>
+    <title>Covid Travel Advisor</title>
 </head>
 <body>
     <header class="jumbotron-fluid">
@@ -29,18 +29,18 @@
                 </p>
             </div>
         </div>
-            
+
         <div class="search_bar_wrapper container-fluid">
             <div class="search_bar_text_wrapper">
                 <p class="search_bar_text" id="search_county_text">Search a Region</p>
             </div>
 
             <div class="county_button_wrapper">
-                <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#search-modal" data-whatever="County Name">Select County</button>
+                <button type="button" class="btn btn-primary custom-btn" id="search-state-btn" data-toggle="modal" data-target="#state-modal" data-whatever="State">Search by State</button>
             </div>
 
             <div class="state_button_wrapper">
-                <button type="button" class="btn btn-primary custom-btn" id="search-btn" data-toggle="modal" data-target="#search-modal" data-whatever="State Name">Select State</button>
+                <button type="button" class="btn btn-primary custom-btn" id="search-county-btn" data-toggle="modal" data-target="#county-modal" data-whatever="County">Search by County</button>
             </div>
         </div>
         <br />
@@ -62,34 +62,97 @@
         </div>
 
     </main>
-    <!-- Modal -->
-    <div class="modal fade custom-modal" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-modal-form"
+
+    <!-- State Modal -->
+    <div class="modal fade custom-modal" id="state-modal" tabindex="-1" role="dialog" aria-labelledby="search-state-form"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="search-modal-form">Select your County.</h5>
+                    <h5 class="modal-title" id="select-s-form">Select your State.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
+
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="county-name-input" class="col-form-label">Select</label>
-                            <input type="text" id="county-name-input" class="form-control" placeholder="Enter the county name" required />
+                            <label for="state-name-input" class="col-form-label">Select</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    State
+                                </button>
+                                <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">State</a>
+                                    <a class="dropdown-item" href="#">State</a>
+                                    <a class="dropdown-item" href="#">State</a>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Submit</button>
-
-
                 </div>
-            </div>            
+            </div>
         </div>
-    </div> 
+    </div>
+
+
+    <!-- County Modal -->
+    <div class="modal fade custom-modal" id="county-modal" tabindex="-1" role="dialog" aria-labelledby="search-county-form"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="select-c-form">Select your County.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="county-name-input" class="col-form-label">Select</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    State
+                                </button>
+                                <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">State</a>
+                                    <a class="dropdown-item" href="#">State</a>
+                                    <a class="dropdown-item" href="#">State</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    County
+                                </button>
+                                <div class="dropdown-menu" id="county-dropdown" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">County Name</a>
+                                    <a class="dropdown-item" href="#">County Name</a>
+                                    <a class="dropdown-item" href="#">County Name</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
