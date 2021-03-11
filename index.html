@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="develop/css/style.css" />
     <title>Covid Travel Advisor</title>
 </head>
+
 <body>
     <header class="jumbotron-fluid">
         <div class="header_wrapper">
@@ -25,7 +27,9 @@
                 <h1 class="mission_header">Mission</h1>
             </div>
             <div class="mission_text_wrapper col-sm-7">
-                <p class="mission_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore velit blanditiis impedit eligendi enim distinctio accusamus rem quaerat illo atque similique mollitia eum sit alias dicta, reiciendis consequatur maxime. Assumenda nobis libero reprehenderit blanditiis reiciendis.
+                <p class="mission_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore velit blanditiis
+                    impedit eligendi enim distinctio accusamus rem quaerat illo atque similique mollitia eum sit alias
+                    dicta, reiciendis consequatur maxime. Assumenda nobis libero reprehenderit blanditiis reiciendis.
                 </p>
             </div>
         </div>
@@ -36,11 +40,13 @@
             </div>
 
             <div class="county_button_wrapper">
-                <button type="button" class="btn btn-primary custom-btn" id="search-state-btn" data-toggle="modal" data-target="#state-modal" data-whatever="State">Search by State</button>
+                <button type="button" class="btn btn-primary custom-btn" id="search-state-btn" data-toggle="modal"
+                    data-target="#state-modal" data-whatever="State">Search by State</button>
             </div>
 
             <div class="state_button_wrapper">
-                <button type="button" class="btn btn-primary custom-btn" id="search-county-btn" data-toggle="modal" data-target="#county-modal" data-whatever="County">Search by County</button>
+                <button type="button" class="btn btn-primary custom-btn" id="search-county-btn" data-toggle="modal"
+                    data-target="#county-modal" data-whatever="County">Search by County</button>
             </div>
         </div>
         <br />
@@ -48,7 +54,8 @@
         <div class="travel_advisory_container row">
             <!-- bootstrap alert for travel advisory / add alert message and cdc link etc-->
             <div class="alert alert-danger" role="alert">
-                A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+                like.
             </div>
         </div>
 
@@ -65,8 +72,8 @@
     </main>
 
     <!-- State Modal -->
-    <div class="modal fade custom-modal" id="state-modal" tabindex="-1" role="dialog" aria-labelledby="search-state-form"
-        aria-hidden="true">
+    <div class="modal fade custom-modal" id="state-modal" tabindex="-1" role="dialog"
+        aria-labelledby="search-state-form" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,22 +84,76 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="state-name-input" class="col-form-label">Select</label>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    State
-                                </button>
-                                <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
-                                    <!-- <a class="dropdown-item" href="#">State</a>
-                                    <a class="dropdown-item" href="#">State</a>
-                                    <a class="dropdown-item" href="#">State</a> -->
+                    <form class="row">
+                        <!-- FIRST SELECTION (required)-->
+                        <div class="form-group col">
+                            <div class="">
+                                <label for="state-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a>-->
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
+                        <!-- SECOND SELECTION -->
+                        <div class="form-group col">
+                            <div class="">
+                                <label for="state-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- THIRD SELECTION -->
+                        <div class="form-group col">
+                            <div class="">
+                                <label for="state-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- FOURTH SELECTION -->
+                        <div class="form-group col">
+                            <div class="">
+                                <label for="state-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="state-dropdown" aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -105,8 +166,8 @@
 
 
     <!-- County Modal -->
-    <div class="modal fade custom-modal" id="county-modal" tabindex="-1" role="dialog" aria-labelledby="search-county-form"
-        aria-hidden="true">
+    <div class="modal fade custom-modal" id="county-modal" tabindex="-1" role="dialog"
+        aria-labelledby="search-county-form" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,33 +178,140 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="county-name-input" class="col-form-label">Select</label>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_state_input_txt" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    State
-                                </button>
-                                <div class="dropdown-menu" id="co-state-dropdown" aria-labelledby="dropdownMenuButton">
-                                    <!-- <a class="dropdown-item" href="#">State</a>
-                                    <a class="dropdown-item" href="#">State</a>
-                                    <a class="dropdown-item" href="#">State</a> -->
+                    <form class="">
+                        <!-- FIRST SELECTION (required)-->
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label">First, select</label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_state_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="co-state-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a> -->
+                                    </div>
                                 </div>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_input_txt" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    County
-                                </button>
-                                <div class="dropdown-menu" id="county-dropdown" aria-labelledby="dropdownMenuButton">
-                                    <!-- <a class="dropdown-item" href="#">County Name</a>
-                                    <a class="dropdown-item" href="#">County Name</a>
-                                    <a class="dropdown-item" href="#">County Name</a> -->
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label">Then, select</label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        County
+                                    </button>
+                                    <div class="dropdown-menu" id="county-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">County Name</a> -->
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
+                        <!-- SECOND SELECTION -->
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_state_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="co-state-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        County
+                                    </button>
+                                    <div class="dropdown-menu" id="county-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">County Name</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- THIRD SELECTION -->
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_state_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="co-state-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        County
+                                    </button>
+                                    <div class="dropdown-menu" id="county-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">County Name</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FOURTH SELECTION -->
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_state_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        State
+                                    </button>
+                                    <div class="dropdown-menu" id="co-state-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">State</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="county-name-input" class="col-form-label"></label>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn btn-secondary dropdown-toggle form-control mb-2 mr-sm-2 co_input_txt"
+                                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        County
+                                    </button>
+                                    <div class="dropdown-menu" id="county-dropdown"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">County Name</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -157,18 +325,19 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
     <script src="develop/js/script.js"></script>
 </body>
+
 </html>
