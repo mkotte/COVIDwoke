@@ -1,6 +1,6 @@
 let apiKey = '74f4b9b4d698466e88f0f73ba927478d';
 let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
-let stateAbbrvArray = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV"];
+let stateAbbrvArray = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
 let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 
 //MAIN SEARCH BUTTONS
@@ -11,14 +11,21 @@ const coSearchBtnEl = document.querySelector('#search-county-btn');
 //STATE MODAL button + input field
 const stSubmitBtnEl = document.querySelector('#st-submit-btn');
 const stateDropdownEl = document.querySelector('#state-dropdown');
-const stInputTxtEl = document.querySelector('#state_input_txt');
+const stInputTxtEl = document.querySelector('.state_input_txt');
 
 //COUNTY MODAL buttons + input field
 const coSubmitBtnEl = document.querySelector('#co-submit-btn');
 const coStateDropdownEl = document.querySelector('#co-state-dropdown');
 const countyDropdownEl = document.querySelector('#county-dropdown');
-const coStInputTxtEl = document.querySelector('#co_state_input_txt');
-const coInputTxtEl = document.querySelector('#co_input_txt');
+const coStInputTxtEl = document.querySelector('.co_state_input_txt');
+const coInputTxtEl = document.querySelector('.co_input_txt');
+
+let statesSelected = [];
+let countiesSelected = {
+
+	state:[],
+	county:[]
+};
 
 //function grabbing data
 function grabData() {
@@ -185,9 +192,14 @@ function renderStateOps(event) {
 		stateDropdownEl.appendChild(stOptions);
 
 		stOptions.addEventListener('click', function (event) {
-			let stateSelected = event.target;
+
+			let stateSelected = event.target.textContent;
 			// renderCountyOps(stateSelected);
-			stInputTxtEl.innerText = stateSelected; //not working
+			stInputTxtEl.innerHTML = stateSelected; //not working
+			// console.log(stateSelected);
+			console.log(event.target.textContent);
+
+
 		})
 
 
@@ -207,10 +219,10 @@ function renderCountyOps() {
 		coStateDropdownEl.appendChild(coStOptions);
 
 		coStOptions.addEventListener('click', function (event) {
-			let coStateSelected = event.target;
+			let coStateSelected = event.target.textContent;
+			coStInputTxtEl.innerHTML = coStateSelected;
 
-
-			let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected.value + '.json?apiKey=' + apiKey;
+			let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected + '.json?apiKey=' + apiKey;
 			fetch(countyApi).then((response) => {
 				return response.json()
 			}).then((data) => {
@@ -229,7 +241,8 @@ function renderCountyOps() {
 
 					coOptions.addEventListener('click', function (event) {
 
-						let countySelected = event.target;
+						let countySelected = event.target.textContent;
+						coInputTxtEl.innerHTML = countySelected;
 					})
 
 				}
@@ -237,8 +250,6 @@ function renderCountyOps() {
 		})
 	}
 };
-
-renderCountyOps();
 
 stSearchBtnEl.addEventListener('click', renderStateOps);
 coSearchBtnEl.addEventListener('click', renderCountyOps);
