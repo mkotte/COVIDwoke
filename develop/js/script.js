@@ -3,6 +3,22 @@ let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
 let stateAbbrv = ["AK",	"AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT","WA", "WI", "WV"];
 let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 
+//MAIN SEARCH BUTTONS
+const stSearchBtnEl = document.querySelector('#search-state-btn');
+const coSearchBtnEl = document.querySelector('#search-county-btn');
+ 
+//STATE MODAL button + input field
+const stSubmitBtnEl = document.querySelector('#st-submit-btn');
+const stateDropdownEl = document.querySelector('#state-dropdown');
+const stInputTxtEl = document.querySelector('#state_input_txt');
+
+//COUNTY MODAL buttons + input field
+const coSubmitBtnEl = document.querySelector('#co-submit-btn');
+const coStateDropdownEl = document.querySelector('#co-state-dropdown');
+const countyDropdownEl = document.querySelector('#county-dropdown');
+const coStInputTxtEl = document.querySelector('#co_state_input_txt');
+const coInputTxtEl = document.querySelector('#co_input_txt');
+
 //function grabbing data
 function grabData(){
 	fetch(stateUrl).then((response) => {
@@ -19,7 +35,7 @@ function grabData(){
 		// 			return data[i]	}}}			
 
 	}).then((dataObj) => {
-		// console.log(dataObj)
+		console.log(dataObj)
 		let totalCases = dataObj.actuals.cases;
 		console.log('totalCases '+ totalCases );
 		let totalDeaths = dataObj.actuals.deaths;
@@ -32,12 +48,20 @@ function grabData(){
 		let infectionRate = (dataObj.metrics.infectionRate).toFixed(2);
 		console.log('infectionRate ' + infectionRate);
 
+		let population = dataObj.population
+		console.log(population);
 
 		//vaccination stats should display based on population
 		let vaccinesCompleted = dataObj.actuals.vaccinationsCompleted;
 		console.log('vaccinesCompleted ' + vaccinesCompleted)
+		let vaccinesCompletedNum = (((vaccinesCompleted) / population ) * 100).toFixed(1) + '%'
+		console.log(vaccinesCompletedNum);
+
 		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
 		console.log('vaccinesInitiated ' + vaccinesInitiated) 
+		let vaccinesInitiatedNum = (((vaccinesInitiated) / population ) * 100).toFixed(1) + '%'
+		console.log(vaccinesInitiatedNum)
+
 		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
 		console.log('vaccinesDistributed ' + vaccinesDistributed)
 
@@ -74,12 +98,20 @@ function grabData(){
 			let countyInfectionRate = (dataObj[0].metrics.infectionRate).toFixed(2);
 			console.log('County infectionRate ' + countyInfectionRate);
 
+			let countyPopulation = dataObj[0].population;
+
 
 			//vaccination stats should display based on population
 			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
 			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
+			let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation ) * 100).toFixed(1) + '%';
+			console.log(countyCompletedNum);
+
 			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
 			console.log('County vaccinesInitiated ' + countyVaccinesInitiated) 
+			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation ) * 100).toFixed(1) + '%';
+			console.log(countyInitiatedNum);
+
 			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
 			console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
 
@@ -94,7 +126,6 @@ function grabData(){
 			//riskLevel
 			let countyRiskLevel = dataObj[0].riskLevels.overall
 			console.log('County Risk Level ' + countyRiskLevel)
-
 		})
 	)
 };
@@ -121,7 +152,7 @@ grabData();
 // 	}).then((data) => {
 // 	console.log(data)
 	
-// 	//county map to iterate through each dropdown option
+	//county map to iterate through each dropdown option
 // 	let counties = data.map((countyData) => countyData.county);
 // 	console.log(counties)
 
@@ -130,32 +161,32 @@ grabData();
 // };
 // apiTesting();
 
-// function renderCountyOptions(){
-// 	let countyApi= 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
-// 	fetch(countyApi).then((response) => {
-// 		return response.json()
-// 	}).then((data) => {
-// 		let counties = data.map((countyData) => countyData.county);
+
+function renderCountyOps(){
+
+	let stateSelected = 'OH';//DELETE ME
+	let countyApi = 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
+	fetch(countyApi).then((response) => {
+		return response.json()
+	}).then((data) => {
+		let counties = data.map((countyData) => countyData.county);
+		// declare append a tag options for the dropdown
+		console.log(counties);
 		
-// 		let countyDropdown = document.getElementById(county-dropdown);
-// 		// declare append a tag options for the dropdown
-// 		for (let i = 0; i < data.length; i++){ 
-// 			console.log(counties)
-// 		}
-// 	})
-// }
-
-// renderCountyOptions();
 
 
+		for (let i = 0; i < counties.length; i++){
+			//counties to populate dropdown
+			let coOptions = document.createElement('a');
+			coOptions.setAttribute('class', 'dropdown-item');
+			coOptions.setAttribute('href', '#');
+			coOptions.textContent = counties[i];
 
-
-
-
-
-
-
-
+			countyDropdownEl.appendChild(coOptions);
+		}
+	})
+}
+renderCountyOps();
 
 
 // COVID COMPARISON SITE
@@ -167,8 +198,10 @@ grabData();
 // On this page we will have the selected states or counties and their statistics displayed on cards in a way that is easy to read 
 // Would like to color code the severity of the statistics and create a graphic that we can use to show risk level's
 
+
 //TODO: psuedo-coding;
 // Start the html index page and the modals
+
 
 //TODO: Figure out how to display the options for different counties based on state selected in the modal's dropdowns (.map, onChange(etc), )
 // yt vid for chart.js pi chart for icu beds + css divs on page for risk level
@@ -183,7 +216,7 @@ grabData();
 
 
 // TODO: Project Plan
-// index page - top to bottom - statring all the id's / form buttons
+// index page - top to bottom - starting with all the id's / form buttons
 // js - use .map for county options on form
 // save selected form options to local storage, grab data on results page
 // results page - place cards on top of jumbotron
