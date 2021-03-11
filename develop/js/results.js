@@ -71,6 +71,9 @@ function grabData(){
 		console.log('ICUCovidUsage ' + ICUCovidUsage);
 		let ICUTotalUsage = dataObj.actuals.icuBeds.currentUsageTotal
 		console.log('ICUTotalUsage ' + ICUTotalUsage);
+		let ICUAvailableBeds = ICUCapacity - ICUTotalUsage;
+		let ICUNonCovidBeds = ICUTotalUsage - ICUCovidUsage ;
+		
 
 		// riskLevel
 		let riskLevel = dataObj.riskLevels.overall
@@ -214,18 +217,17 @@ function grabData(){
 		let completedBarContainer = document.createElement('div');
 		completedContainer.appendChild(completedBarContainer)
 		let completedProgressBar = document.createElement('div');
-		completedProgressBar.style.backgroundColor = "Red";
-		completedProgressBar.style.border = "1 px solid #CCC";
-		completedProgressBar.style.width = "150px";
+		completedProgressBar.setAttribute('class', 'completedBar');
 		completedBarContainer.appendChild(completedProgressBar);
 		let completedPercentageEl = document.createElement('p');
 		completedPercentageEl.textContent = vaccinesCompletedNum;
 		completedBarContainer.append(completedPercentageEl);
 		let completedProgress = document.createElement('div');
-		completedProgress.style.backgroundColor = "Blue";
-		completedProgress.style.height = "20px";
 		completedProgress.style.width = vaccinesCompletedNum;
+		completedProgress.setAttribute('class', 'completedProgress');
 		completedProgressBar.appendChild(completedProgress);
+
+
 
 		let initiatedContainer = document.createElement('div');
 		initiatedContainer.setAttribute('class', 'initiated');
@@ -236,42 +238,52 @@ function grabData(){
 		let initiatedBarContainer = document.createElement('div');
 		initiatedContainer.appendChild(initiatedBarContainer)
 		let initiatedProgressBar = document.createElement('div');
-		initiatedProgressBar.style.backgroundColor = "Red";
-		initiatedProgressBar.style.border = "1 px solid #CCC"
-		initiatedProgressBar.style.width = "150px"
+		initiatedProgressBar.setAttribute('class', 'initiatedBar');
 		initiatedBarContainer.appendChild(initiatedProgressBar);
 		let initiatedPercentageEl = document.createElement('p');
 		initiatedPercentageEl.textContent = vaccinesInitiatedNum;
 		initiatedBarContainer.append(initiatedPercentageEl);
-		let initiatedProgress = document.createElement('div')
-		initiatedProgress.style.backgroundColor = "Blue";
-		initiatedProgress.style.height = "20px";
+		let initiatedProgress = document.createElement('div');
+		initiatedProgress.setAttribute('class', 'initiatedProgress')
 		initiatedProgress.style.width = vaccinesInitiatedNum;
 		initiatedProgressBar.appendChild(initiatedProgress);
 
 
+	// icu section
+		let icuTitle = document.createElement('h3');
+		icuTitle.textContent = 'ICU Beds'
+		icuStatsDiv.appendChild(icuTitle);
 
-
-
+		var chartContainer = document.createElement('canvas')
+		chartContainer.setAttribute('id', 'myChart')
+		chartContainer.getContext('2d')
+		icuStatsDiv.appendChild(chartContainer);
 		
+	
+		var icuDonutChart = new Chart(chartContainer, {
+			type: 'doughnut',
+			data: {
+				labels: ['Available Beds','Non-Covid Beds','Covid Beds'],
+				datasets: [{
+					label: 'Points',
+					// can change colors here
+					backgroundColor: ['Red', 'Blue', 'Green'],
+					borderColor:['Red', 'Blue', 'Green'],
+					borderWidth: 2,
+					data: [ICUAvailableBeds, ICUNonCovidBeds, ICUCovidUsage]
 
-
+				}]
+			}, 
+			options: {
+				cutoutPercentage: 60,
+				animation:{
+					animateScale : true,
+				}
+			}	
+		});
 		
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
+		icuDonutChart.canvas.parentNode.style.width = '300px';
+		icuDonutChart.canvas.parentNode.style.height = '300px';
 
 
 
