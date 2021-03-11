@@ -1,10 +1,26 @@
 let apiKey = '74f4b9b4d698466e88f0f73ba927478d';
 let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
-let stateAbbrv = ["AK",	"AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT","WA", "WI", "WV"];
+let stateAbbrvArray = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV"];
 let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 
+//MAIN SEARCH BUTTONS
+const stSearchBtnEl = document.querySelector('#search-state-btn');
+const coSearchBtnEl = document.querySelector('#search-county-btn');
+
+//STATE MODAL button + input field
+const stSubmitBtnEl = document.querySelector('#st-submit-btn');
+const stateDropdownEl = document.querySelector('#state-dropdown');
+const stInputTxtEl = document.querySelector('#state_input_txt');
+
+//COUNTY MODAL buttons + input field
+const coSubmitBtnEl = document.querySelector('#co-submit-btn');
+const coStateDropdownEl = document.querySelector('#co-state-dropdown');
+const countyDropdownEl = document.querySelector('#county-dropdown');
+const coStInputTxtEl = document.querySelector('#co_state_input_txt');
+const coInputTxtEl = document.querySelector('#co_input_txt');
+
 //function grabbing data
-function grabData(){
+function grabData() {
 	fetch(stateUrl).then((response) => {
 		return response.json()
 	}).then((data) => {
@@ -16,12 +32,12 @@ function grabData(){
 		// 	for (let i = 0; i < data.length ; i++){
 		// 		var value = func(data[i]);
 		// 		if (value) {
-		// 			return data[i]	}}}			
+		// 			return data[i]	}}}
 
 	}).then((dataObj) => {
 		// console.log(dataObj)
 		let totalCases = dataObj.actuals.cases;
-		console.log('totalCases '+ totalCases );
+		console.log('totalCases ' + totalCases);
 		let totalDeaths = dataObj.actuals.deaths;
 		console.log('totalDeaths ' + totalDeaths);
 		//daily cases per 100k
@@ -37,7 +53,7 @@ function grabData(){
 		let vaccinesCompleted = dataObj.actuals.vaccinationsCompleted;
 		console.log('vaccinesCompleted ' + vaccinesCompleted)
 		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
-		console.log('vaccinesInitiated ' + vaccinesInitiated) 
+		console.log('vaccinesInitiated ' + vaccinesInitiated)
 		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
 		console.log('vaccinesDistributed ' + vaccinesDistributed)
 
@@ -54,16 +70,16 @@ function grabData(){
 		console.log('Risk Level ' + riskLevel)
 
 	})
-	.then(fetch(countyUrl).then((response) => {
-		return response.json();
-	}).then((data) => {
-		// console.log(data)
-		return data.filter((el) => el.state === "OH").filter((el) => el.county === "Franklin County");
-		}).then((dataObj) =>{
+		.then(fetch(countyUrl).then((response) => {
+			return response.json();
+		}).then((data) => {
+			// console.log(data)
+			return data.filter((el) => el.state === "OH").filter((el) => el.county === "Franklin County");
+		}).then((dataObj) => {
 			console.log(dataObj)
-		
+
 			let countyTotalCases = dataObj[0].actuals.cases;
-			console.log('County totalCases '+ countyTotalCases );
+			console.log('County totalCases ' + countyTotalCases);
 			let countyTotalDeaths = dataObj[0].actuals.deaths;
 			console.log('County totalDeaths ' + countyTotalDeaths);
 			//daily cases per 100k
@@ -79,7 +95,7 @@ function grabData(){
 			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
 			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
 			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
-			console.log('County vaccinesInitiated ' + countyVaccinesInitiated) 
+			console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
 			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
 			console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
 
@@ -96,9 +112,10 @@ function grabData(){
 			console.log('County Risk Level ' + countyRiskLevel)
 
 		})
-	)
+		)
 };
 
+//results page
 grabData();
 
 
@@ -120,7 +137,7 @@ grabData();
 // 	return response.json()
 // 	}).then((data) => {
 // 	console.log(data)
-	
+
 // 	//county map to iterate through each dropdown option
 // 	let counties = data.map((countyData) => countyData.county);
 // 	console.log(counties)
@@ -130,25 +147,121 @@ grabData();
 // };
 // apiTesting();
 
-// function renderCountyOptions(){
-// 	let countyApi= 'https://api.covidactnow.org/v2/county/' + stateSelected + '.json?apiKey=' + apiKey;
-// 	fetch(countyApi).then((response) => {
-// 		return response.json()
-// 	}).then((data) => {
-// 		let counties = data.map((countyData) => countyData.county);
-		
-// 		let countyDropdown = document.getElementById(county-dropdown);
-// 		// declare append a tag options for the dropdown
-// 		for (let i = 0; i < data.length; i++){ 
-// 			console.log(counties)
-// 		}
-// 	})
-// }
 
-// renderCountyOptions();
+//TODO: on click of state and couty modals
+//use state abbrev variable to populate state dropdowns
+
+//couty dropdown options
+//state selected is state value for county dropdown
+
+//TODO: add event listeners for state and county modals
+
+function renderStateOps(event) {
+	event.preventDefault()
+
+	for (let i = 0; i < stateAbbrvArray.length; i++) {
+
+		let stOptions = document.createElement('a');
+		stOptions.setAttribute('class', 'dropdown-item');
+		stOptions.setAttribute('href', '#');
+		stOptions.textContent = stateAbbrvArray[i];
+
+		stateDropdownEl.appendChild(stOptions);
+
+		stOptions.addEventListener('click', function (event) {
+			let stateSelected = event.target;
+			// renderCountyOps(stateSelected);
+			stInputTxtEl.innerText = stateSelected; //not working
+		})
+
+
+		// return stateSelected;
+	}
+}
+
+function renderCountyOps() {
+
+	for (let i = 0; i < stateAbbrvArray.length; i++) {
+
+		let coStOptions = document.createElement('a');
+		coStOptions.setAttribute('class', 'dropdown-item');
+		coStOptions.setAttribute('href', '#');
+		coStOptions.textContent = stateAbbrvArray[i];
+
+		coStateDropdownEl.appendChild(coStOptions);
+
+		coStOptions.addEventListener('click', function (event) {
+			let coStateSelected = event.target;
+
+
+			let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected.value + '.json?apiKey=' + apiKey;
+			fetch(countyApi).then((response) => {
+				return response.json()
+			}).then((data) => {
+				let counties = data.map((countyData) => countyData.county);
+				// declare append a tag options for the dropdown
+				console.log(counties);
+
+				for (let i = 0; i < counties.length; i++) {
+					//counties to populate dropdown
+					let coOptions = document.createElement('a');
+					coOptions.setAttribute('class', 'dropdown-item');
+					coOptions.setAttribute('href', '#');
+					coOptions.textContent = counties[i];
+
+					countyDropdownEl.appendChild(coOptions);
+
+					coOptions.addEventListener('click', function (event) {
+
+						let countySelected = event.target;
+					})
+
+				}
+			})
+		})
+	}
+};
+
+renderCountyOps();
+
+stSearchBtnEl.addEventListener('click', renderStateOps);
+coSearchBtnEl.addEventListener('click', renderCountyOps);
+
+//event listener for SUBMIT STATE modal
+stSubmitBtnEl.addEventListener('click', function (event) {
+	event.preventDefault();
+
+	//use event to access user input
+	console.log(event);
+	let userInput = stateDropdownEl.value;
+
+	//call function to render search history within this function for access to needed variables
+	// savedSearchArray.push(userInput);
+
+	// renderSearchHistory();
+});
+
+//event listener SUBMIT COUNTY modal
+coSubmitBtnEl.addEventListener('click', function (event) {
+	event.preventDefault();
+
+	//use event to access user input
+	console.log(event);
+
+	let userInput = coStateDropdownEl.value + countyDropdownEl.value;
+
+	//render county options based on state input
+	renderCountyOps(userInput);
+
+	//call function to render search history within this function for access to needed variables
+	// savedSearchArray.push(userInput);
+
+	// renderSearchHistory();
+});
 
 
 
+//TODO: store search history in local storage
 
 
 
@@ -164,7 +277,7 @@ grabData();
 // the modals will have dropdown's with options that will plug into the API's
 
 // Second page will be the results page
-// On this page we will have the selected states or counties and their statistics displayed on cards in a way that is easy to read 
+// On this page we will have the selected states or counties and their statistics displayed on cards in a way that is easy to read
 // Would like to color code the severity of the statistics and create a graphic that we can use to show risk level's
 
 //TODO: psuedo-coding;
@@ -187,7 +300,7 @@ grabData();
 // js - use .map for county options on form
 // save selected form options to local storage, grab data on results page
 // results page - place cards on top of jumbotron
-// grab chart.js  
+// grab chart.js
 
 
 
@@ -201,4 +314,4 @@ $('#search-modal').on('show.bs.modal', function (event) {
 	var modal = $(this)
 	modal.find('.modal-title').text('Search ' + countyState)
 	modal.find('.modal-body input').val(countyState)
-  })
+})
