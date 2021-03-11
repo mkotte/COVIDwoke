@@ -11,7 +11,7 @@ const coSearchBtnEl = document.querySelector('#search-county-btn');
 //STATE MODAL button + input field
 const stSubmitBtnEl = document.querySelector('#st-submit-btn');
 const stateDropdownEl = document.querySelectorAll('.state-dropdown');
-const stInputTxtEl = document.querySelector('.state_input_txt');
+const stInputTxtEl = document.querySelectorAll('.state_input_txt');
 
 console.log(stateDropdownEl);
 
@@ -19,15 +19,28 @@ console.log(stateDropdownEl);
 const coSubmitBtnEl = document.querySelector('#co-submit-btn');
 const coStateDropdownEl = document.querySelectorAll('.co-state-dropdown');
 const countyDropdownEl = document.querySelectorAll('.county-dropdown');
-const coStInputTxtEl = document.querySelector('.co_state_input_txt');
-const coInputTxtEl = document.querySelector('.co_input_txt');
+const coStInputTxtEl = document.querySelectorAll('.co_state_input_txt');
+const coInputTxtEl = document.querySelectorAll('.co_input_txt');
 
-let statesSelected = [];
-let countiesSelected = {
+let saveStatesSelected = [];
+let saveCountiesSelected = [{
 
 	state: [],
 	county: []
-};
+},
+{
+	state: [],
+	county: []
+},
+{
+	state: [],
+	county: []
+},
+{
+	state: [],
+	county: []
+}];
+
 
 //function grabbing data
 function grabData() {
@@ -204,9 +217,27 @@ function renderStateOps(event) {
 			})
 			// return stateSelected;
 			stateDropdownEl[i].appendChild(stOptions);
-
 		}
 	}
+	//event listener for SUBMIT STATE modal
+	stSubmitBtnEl.addEventListener('click', function (event) {
+		console.log(event);
+		console.log(event.target.offsetParent.children[1].childNodes[1][0].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][1].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][2].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][3].textContent);
+
+		// saveStatesSelected.forEach(function (userState, index) {
+
+
+		// })
+
+		//call function to render search history within this function for access to needed variables
+		// savedSearchArray.push(userInput);
+
+		// renderSearchHistory();
+	});
+
 }
 
 function renderCountyOps() {
@@ -229,6 +260,7 @@ function renderCountyOps() {
 
 				//regain value of i in scope
 				let l = i;
+
 				event.target.parentNode.previousSibling.previousSibling.innerHTML = coStateSelected;
 
 				let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected + '.json?apiKey=' + apiKey;
@@ -263,42 +295,31 @@ function renderCountyOps() {
 			})
 		}
 	}
+	//event listener SUBMIT COUNTY modal
+	coSubmitBtnEl.addEventListener('click', function (event) {
+		event.preventDefault();
+
+		//use event to access user input
+		console.log(event);
+		console.log(event.target.offsetParent.children[1].childNodes[1][0].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][1].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][2].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][3].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][4].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][5].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][6].textContent);
+		console.log(event.target.offsetParent.children[1].childNodes[1][7].textContent);
+		//call function to render search history within this function for access to needed variables
+		// savedSearchArray.push(userInput);
+
+		// renderSearchHistory();
+	});
+
 };
 
 stSearchBtnEl.addEventListener('click', renderStateOps);
 coSearchBtnEl.addEventListener('click', renderCountyOps);
 
-//event listener for SUBMIT STATE modal
-stSubmitBtnEl.addEventListener('click', function (event) {
-	event.preventDefault();
-
-	//use event to access user input
-	console.log(event);
-	let userInput = stateDropdownEl.value;
-
-	//call function to render search history within this function for access to needed variables
-	// savedSearchArray.push(userInput);
-
-	// renderSearchHistory();
-});
-
-//event listener SUBMIT COUNTY modal
-coSubmitBtnEl.addEventListener('click', function (event) {
-	event.preventDefault();
-
-	//use event to access user input
-	console.log(event);
-
-	let userInput = coStateDropdownEl.value + countyDropdownEl.value;
-
-	//render county options based on input
-	renderCountyOps(userInput);
-
-	//call function to render search history within this function for access to needed variables
-	// savedSearchArray.push(userInput);
-
-	// renderSearchHistory();
-});
 
 
 
