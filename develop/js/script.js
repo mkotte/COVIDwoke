@@ -10,21 +10,23 @@ const coSearchBtnEl = document.querySelector('#search-county-btn');
 
 //STATE MODAL button + input field
 const stSubmitBtnEl = document.querySelector('#st-submit-btn');
-const stateDropdownEl = document.querySelector('#state-dropdown');
+const stateDropdownEl = document.querySelectorAll('.state-dropdown');
 const stInputTxtEl = document.querySelector('.state_input_txt');
+
+console.log(stateDropdownEl);
 
 //COUNTY MODAL buttons + input field
 const coSubmitBtnEl = document.querySelector('#co-submit-btn');
-const coStateDropdownEl = document.querySelector('#co-state-dropdown');
-const countyDropdownEl = document.querySelector('#county-dropdown');
+const coStateDropdownEl = document.querySelectorAll('.co-state-dropdown');
+const countyDropdownEl = document.querySelectorAll('.county-dropdown');
 const coStInputTxtEl = document.querySelector('.co_state_input_txt');
 const coInputTxtEl = document.querySelector('.co_input_txt');
 
 let statesSelected = [];
 let countiesSelected = {
 
-	state:[],
-	county:[]
+	state: [],
+	county: []
 };
 
 //function grabbing data
@@ -62,13 +64,13 @@ function grabData() {
 		//vaccination stats should display based on population
 		let vaccinesCompleted = dataObj.actuals.vaccinationsCompleted;
 		console.log('vaccinesCompleted ' + vaccinesCompleted)
-		let vaccinesCompletedNum = (((vaccinesCompleted) / population ) * 100).toFixed(1) + '%'
+		let vaccinesCompletedNum = (((vaccinesCompleted) / population) * 100).toFixed(1) + '%'
 		console.log(vaccinesCompletedNum);
 
 		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
 
 		console.log('vaccinesInitiated ' + vaccinesInitiated)
-		let vaccinesInitiatedNum = (((vaccinesInitiated) / population ) * 100).toFixed(1) + '%'
+		let vaccinesInitiatedNum = (((vaccinesInitiated) / population) * 100).toFixed(1) + '%'
 		console.log(vaccinesInitiatedNum)
 
 		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
@@ -113,12 +115,12 @@ function grabData() {
 			//vaccination stats should display based on population
 			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
 			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
-			let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation ) * 100).toFixed(1) + '%';
+			let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation) * 100).toFixed(1) + '%';
 			console.log(countyCompletedNum);
 
 			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
 			console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
-			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation ) * 100).toFixed(1) + '%';
+			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation) * 100).toFixed(1) + '%';
 			console.log(countyInitiatedNum);
 
 			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
@@ -162,7 +164,7 @@ grabData();
 // 	}).then((data) => {
 // 	console.log(data)
 
-	//county map to iterate through each dropdown option
+//county map to iterate through each dropdown option
 // 	let counties = data.map((countyData) => countyData.county);
 // 	console.log(counties)
 
@@ -181,73 +183,85 @@ grabData();
 
 function renderStateOps(event) {
 	event.preventDefault()
+	for (let i = 0; i < stateDropdownEl.length; i++) {
 
-	for (let i = 0; i < stateAbbrvArray.length; i++) {
+		console.log(stateDropdownEl[i]);
 
-		let stOptions = document.createElement('a');
-		stOptions.setAttribute('class', 'dropdown-item');
-		stOptions.setAttribute('href', '#');
-		stOptions.textContent = stateAbbrvArray[i];
+		for (let j = 0; j < stateAbbrvArray.length; j++) {
 
-		stateDropdownEl.appendChild(stOptions);
+			let stOptions = document.createElement('a');
+			stOptions.setAttribute('class', 'dropdown-item');
+			stOptions.setAttribute('href', '#');
+			// stOptions.setAttribute('data-state', stateAbbrvArray[j]);
+			stOptions.textContent = stateAbbrvArray[j];
 
-		stOptions.addEventListener('click', function (event) {
+			stOptions.addEventListener('click', function (event) {
 
-			let stateSelected = event.target.textContent;
-			// renderCountyOps(stateSelected);
-			stInputTxtEl.innerHTML = stateSelected; //not working
-			// console.log(stateSelected);
-			console.log(event.target.textContent);
+				let stateSelected = event.target.textContent;
+				event.target.parentNode.previousSibling.previousSibling.innerHTML = stateSelected;
+				console.log(event.target.parentNode.previousSibling.previousSibling);
+				console.log(event.target.textContent);
+			})
+			// return stateSelected;
+			stateDropdownEl[i].appendChild(stOptions);
 
-
-		})
-
-
-		// return stateSelected;
+		}
 	}
 }
 
 function renderCountyOps() {
 
-	for (let i = 0; i < stateAbbrvArray.length; i++) {
+	for (let i = 0; i < coStateDropdownEl.length; i++) {
 
-		let coStOptions = document.createElement('a');
-		coStOptions.setAttribute('class', 'dropdown-item');
-		coStOptions.setAttribute('href', '#');
-		coStOptions.textContent = stateAbbrvArray[i];
 
-		coStateDropdownEl.appendChild(coStOptions);
+		for (let j = 0; j < stateAbbrvArray.length; j++) {
 
-		coStOptions.addEventListener('click', function (event) {
-			let coStateSelected = event.target.textContent;
-			coStInputTxtEl.innerHTML = coStateSelected;
+			let coStOptions = document.createElement('a');
+			coStOptions.setAttribute('class', 'dropdown-item');
+			coStOptions.setAttribute('href', '#');
+			// coStOptions.setAttribute('data-state', stateAbbrvArray[i])
+			coStOptions.textContent = stateAbbrvArray[j];
 
-			let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected + '.json?apiKey=' + apiKey;
-			fetch(countyApi).then((response) => {
-				return response.json()
-			}).then((data) => {
-				let counties = data.map((countyData) => countyData.county);
-				// declare append a tag options for the dropdown
-				console.log(counties);
+			coStateDropdownEl[i].appendChild(coStOptions);
 
-				for (let i = 0; i < counties.length; i++) {
+			coStOptions.addEventListener('click', function (event) {
+				let coStateSelected = event.target.textContent;
+
+				//regain value of i in scope
+				let l = i;
+				event.target.parentNode.previousSibling.previousSibling.innerHTML = coStateSelected;
+
+				let countyApi = 'https://api.covidactnow.org/v2/county/' + coStateSelected + '.json?apiKey=' + apiKey;
+				fetch(countyApi).then((response) => {
+					return response.json()
+				}).then((data) => {
+
 					//counties to populate dropdown
-					let coOptions = document.createElement('a');
-					coOptions.setAttribute('class', 'dropdown-item');
-					coOptions.setAttribute('href', '#');
-					coOptions.textContent = counties[i];
+					let counties = data.map((countyData) => countyData.county);
+					console.log(counties);
 
-					countyDropdownEl.appendChild(coOptions);
+					//append a tag as options for the dropdown
+					for (let k = 0; k < counties.length; k++) {
 
-					coOptions.addEventListener('click', function (event) {
+						let coOptions = document.createElement('a');
+						coOptions.setAttribute('class', 'dropdown-item');
+						coOptions.setAttribute('href', '#');
+						coOptions.textContent = counties[k];
 
-						let countySelected = event.target.textContent;
-						coInputTxtEl.innerHTML = countySelected;
-					})
+						console.log(countyDropdownEl, l)
+						countyDropdownEl[l].appendChild(coOptions);
 
-				}
+						coOptions.addEventListener('click', function (event) {
+
+							let countySelected = event.target.textContent;
+							// coInputTxtEl.innerHTML = countySelected;
+							event.target.parentNode.previousSibling.previousSibling.innerHTML = countySelected;
+						})
+
+					}
+				})
 			})
-		})
+		}
 	}
 };
 
@@ -277,7 +291,7 @@ coSubmitBtnEl.addEventListener('click', function (event) {
 
 	let userInput = coStateDropdownEl.value + countyDropdownEl.value;
 
-	//render county options based on state input
+	//render county options based on input
 	renderCountyOps(userInput);
 
 	//call function to render search history within this function for access to needed variables
