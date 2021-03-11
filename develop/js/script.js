@@ -7,6 +7,7 @@ let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 const stSearchBtnEl = document.querySelector('#search-state-btn');
 const coSearchBtnEl = document.querySelector('#search-county-btn');
 
+
 //STATE MODAL button + input field
 const stSubmitBtnEl = document.querySelector('#st-submit-btn');
 const stateDropdownEl = document.querySelector('#state-dropdown');
@@ -35,7 +36,7 @@ function grabData() {
 		// 			return data[i]	}}}
 
 	}).then((dataObj) => {
-		// console.log(dataObj)
+		console.log(dataObj)
 		let totalCases = dataObj.actuals.cases;
 		console.log('totalCases ' + totalCases);
 		let totalDeaths = dataObj.actuals.deaths;
@@ -48,12 +49,21 @@ function grabData() {
 		let infectionRate = (dataObj.metrics.infectionRate).toFixed(2);
 		console.log('infectionRate ' + infectionRate);
 
+		let population = dataObj.population
+		console.log(population);
 
 		//vaccination stats should display based on population
 		let vaccinesCompleted = dataObj.actuals.vaccinationsCompleted;
 		console.log('vaccinesCompleted ' + vaccinesCompleted)
+		let vaccinesCompletedNum = (((vaccinesCompleted) / population ) * 100).toFixed(1) + '%'
+		console.log(vaccinesCompletedNum);
+
 		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
+
 		console.log('vaccinesInitiated ' + vaccinesInitiated)
+		let vaccinesInitiatedNum = (((vaccinesInitiated) / population ) * 100).toFixed(1) + '%'
+		console.log(vaccinesInitiatedNum)
+
 		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
 		console.log('vaccinesDistributed ' + vaccinesDistributed)
 
@@ -90,12 +100,20 @@ function grabData() {
 			let countyInfectionRate = (dataObj[0].metrics.infectionRate).toFixed(2);
 			console.log('County infectionRate ' + countyInfectionRate);
 
+			let countyPopulation = dataObj[0].population;
+
 
 			//vaccination stats should display based on population
 			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
 			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
+			let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation ) * 100).toFixed(1) + '%';
+			console.log(countyCompletedNum);
+
 			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
 			console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
+			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation ) * 100).toFixed(1) + '%';
+			console.log(countyInitiatedNum);
+
 			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
 			console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
 
@@ -110,7 +128,6 @@ function grabData() {
 			//riskLevel
 			let countyRiskLevel = dataObj[0].riskLevels.overall
 			console.log('County Risk Level ' + countyRiskLevel)
-
 		})
 		)
 };
@@ -138,7 +155,7 @@ grabData();
 // 	}).then((data) => {
 // 	console.log(data)
 
-// 	//county map to iterate through each dropdown option
+	//county map to iterate through each dropdown option
 // 	let counties = data.map((countyData) => countyData.county);
 // 	console.log(counties)
 
@@ -146,7 +163,6 @@ grabData();
 // ))
 // };
 // apiTesting();
-
 
 //TODO: on click of state and couty modals
 //use state abbrev variable to populate state dropdowns
@@ -264,13 +280,6 @@ coSubmitBtnEl.addEventListener('click', function (event) {
 //TODO: store search history in local storage
 
 
-
-
-
-
-
-
-
 // COVID COMPARISON SITE
 // index.html - homepage describing what it is / our mission etc
 // homepage includes 2 seperate modals, 1 for state comparisons, the other for counties
@@ -280,8 +289,10 @@ coSubmitBtnEl.addEventListener('click', function (event) {
 // On this page we will have the selected states or counties and their statistics displayed on cards in a way that is easy to read
 // Would like to color code the severity of the statistics and create a graphic that we can use to show risk level's
 
+
 //TODO: psuedo-coding;
 // Start the html index page and the modals
+
 
 //TODO: Figure out how to display the options for different counties based on state selected in the modal's dropdowns (.map, onChange(etc), )
 // yt vid for chart.js pi chart for icu beds + css divs on page for risk level
@@ -296,7 +307,7 @@ coSubmitBtnEl.addEventListener('click', function (event) {
 
 
 // TODO: Project Plan
-// index page - top to bottom - statring all the id's / form buttons
+// index page - top to bottom - starting with all the id's / form buttons
 // js - use .map for county options on form
 // save selected form options to local storage, grab data on results page
 // results page - place cards on top of jumbotron
@@ -314,4 +325,4 @@ $('#search-modal').on('show.bs.modal', function (event) {
 	var modal = $(this)
 	modal.find('.modal-title').text('Search ' + countyState)
 	modal.find('.modal-body input').val(countyState)
-})
+});

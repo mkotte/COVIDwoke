@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stay COVID Informed
 
 ## Description
