@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: #222421;
+    height: 100%;
+}
+
+header{
+    background: #D6D6D6;
+}
+
+header div.header_wrapper{
+    height: 125px;
+    padding: 40px 15px 0 15px;
+}
+
+#big_header_text{
+    color: #02263E;
+    font-size: 35px;
+    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+}
+#sm_header_text{
+    color: #02263E;
+    font-size: 16px;
+    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+}
+
+main{
+    height: 100%;
+    padding: 0 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+section#results{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+/*results js set attribute */
+.state-card-div{
+    /* border: 0.2px solid #EDE5DC; */
+    max-width: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-evenly;
+    justify-content: space-between;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: opx 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-header-div{
+    border: 0.1px solid #EDE5DC;
+    max-width: 640px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.general-stats-div{
+    border: 0.1px solid #EDE5DC;
+    max-width: 320px;
+    min-width: 300px;
+    min-height: 320px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 7px;
+}
+
+.risk-level-div{
+    border: 0.1px solid #EDE5DC;
+    max-width: 320px;
+    min-width: 300px;
+    min-height: 320px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 7px;
+}
+
+.vaccine-stats-div{
+    border: 0.1px solid #EDE5DC;
+    max-width: 320px;
+    min-width: 300px;
+    min-height: 320px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 7px;
+}
+
+.icu-stats-div{
+    border: 0.1px solid #EDE5DC;
+    max-width: 320px;
+    min-width: 300px;
+    min-height: 320px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 7px;
+}
+
+.state-name-card-header
+
+.pop-card-header
+
+.gen-stats-header
+
+.daily-stats-div
+
+.new-cases-txt
+
+.new-deaths-txt
+
+.total-stats-div
+
+.total-cases-txt
+
+.total-deaths-txt
+
+/* risk level displays div's styled here */
+.riskLevel-5{
+    background-color: red;
+    width:24px;
+    height:30px;
+    margin-left: 2px;
+    border-radius: 40% 40% 0 0;
+}
+
+.riskLevel-4{
+    background-color:orange;
+    width:24px;
+    height:30px;
+    margin-left: 2px;
+}
+
+.riskLevel-3{
+    background-color:yellow;
+    width:24px;
+    height:30px;
+    margin-left: 2px;
+}
+
+.riskLevel-2{
+    background-color: greenyellow;
+    width:24px;
+    height:30px;
+    margin-left: 2px;
+}
+
+.riskLevel-1{
+    background-color:green;
+    width:24px;
+    height:30px;
+    margin-left: 2px;
+    border-radius: 0 0 40% 40%;
+}
+
+.selected-level{
+    width:28px;
+    height:34px;
+    border: 3px solid black;
+    margin-left: 0;
+
+}
+
+/* vaccine progress bars here */
+
+.completedBar{
+    border-radius: 40px;
+    background-color: red;
+    height:20px;
+    width: 150px;
+}
+
+.completedProgress{
+    border-radius: 40px 0 0 40px;
+    background-color: green;
+    height:20px;
+
+}
+
+
+.initiatedBar{
+    border-radius: 40px;
+    background-color: red;
+    height:20px;
+    width: 150px;
+}
+
+.initiatedProgress{
+    border-radius: 40px 0 0 40px;
+    background-color: green;
+    height:20px;
+}
+
+@media screen and (max-width: 640)

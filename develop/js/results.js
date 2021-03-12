@@ -27,7 +27,7 @@ function grabData(){
 		console.log('totalCases '+ totalCases );
 		let totalDeaths = dataObj.actuals.deaths;
 		console.log('totalDeaths ' + totalDeaths);
-		
+
         // daily cases per 100k
 		let dailyCases = dataObj.actuals.newCases;
 		console.log('dailyCases ' + dailyCases);
@@ -47,13 +47,13 @@ function grabData(){
 		console.log('vaccinesCompleted ' + vaccinesCompleted)
 		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
 		console.log('vaccinesInitiated ' + vaccinesInitiated)
-       
+
         // vaccination percentages
         let vaccinesCompletedNum = (((vaccinesCompleted) / population ) * 100).toFixed(1) + '%'
 		console.log(vaccinesCompletedNum);
 		let vaccinesInitiatedNum = (((vaccinesInitiated) / population ) * 100).toFixed(1) + '%'
-		console.log(vaccinesInitiatedNum) 
-		
+		console.log(vaccinesInitiatedNum)
+
         // distribution's unused for now
 		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
 		console.log('vaccinesDistributed ' + vaccinesDistributed)
@@ -67,19 +67,32 @@ function grabData(){
 		console.log('ICUTotalUsage ' + ICUTotalUsage);
 		let ICUAvailableBeds = ICUCapacity - ICUTotalUsage;
 		let ICUNonCovidBeds = ICUTotalUsage - ICUCovidUsage ;
-		
 
-		// riskLevel
+		// risk level
 		let riskLevel = dataObj.riskLevels.overall
 		console.log('Risk Level ' + riskLevel)
 
+//DOM MANIPULATION STARTS HERE
+
 		// creating +appending information sections to cards
 		let stateCardEL = document.createElement('div');
+		stateCardEL.setAttribute('class', 'state-card-div')
+		stateCardEL.setAttribute('id', '')
 		let cardHeader = document.createElement('div')
+		cardHeader.setAttribute('class', 'card-header-div')
+		cardHeader.setAttribute('id', '')
 		let generalStatsDiv = document.createElement('div');
+		generalStatsDiv.setAttribute('class', 'general-stats-div')
+		generalStatsDiv.setAttribute('id', '')
 		let riskLevelDiv = document.createElement('div');
-		let vaccineStatsDiv  = document.createElement('div');
-		let icuStatsDiv  = document.createElement('div');
+		riskLevelDiv.setAttribute('class', 'risk-level-div')
+		riskLevelDiv.setAttribute('id', '')
+		let vaccineStatsDiv = document.createElement('div');
+		vaccineStatsDiv.setAttribute('class', 'vaccine-stats-div')
+		vaccineStatsDiv.setAttribute('id', '')
+		let icuStatsDiv = document.createElement('div');
+		icuStatsDiv.setAttribute('class', 'icu-stats-div')
+		icuStatsDiv.setAttribute('id', '')
 		stateCardEL.appendChild(cardHeader);
 		stateCardEL.appendChild(generalStatsDiv);
 		stateCardEL.appendChild(riskLevelDiv);
@@ -90,36 +103,53 @@ function grabData(){
 	//header section w/ population
 		//TODO: use selected state w text variable stateName to display name of state
 		let stateNameEl = document.createElement('h3');
+		stateNameEl.setAttribute('class', 'state-name-card-header')
+		stateNameEl.setAttribute('id', '')
 		stateNameEl.textContent = "" //TODO: link state searched here, tbd how
 		cardHeader.appendChild(stateNameEl);
-		let populationEl = document.createElement('h3')
+
+		let populationEl = document.createElement('h3');
+		populationEl.setAttribute('class', 'pop-card-header')
+		populationEl.setAttribute('id', '')
 		populationEl.textContent = "Population: " + population;
 		cardHeader.appendChild(populationEl);
 
 	// general stats card section
 		let generalStatsTitle = document.createElement('h3');
+		generalStatsTitle.setAttribute('class', 'gen-stats-header')
+		generalStatsTitle.setAttribute('id', '')
 		generalStatsTitle.textContent = "General Stats";
 		generalStatsDiv.appendChild(generalStatsTitle)
 
 		// daily stats container + info
 		let dailyStatsDiv = document.createElement('div');
-		dailyStatsDiv.setAttribute('class', "daily-stats");
+		dailyStatsDiv.setAttribute('class', 'daily-stats-div');
+		dailyStatsDiv.setAttribute('id', '')
 		generalStatsDiv.appendChild(dailyStatsDiv);
 		let newCasesEl = document.createElement('p');
+		newCasesEl.setAttribute('class', 'new-cases-txt');
+		newCasesEl.setAttribute('id', '')
 		newCasesEl.textContent = "New Cases: " + dailyCases;
 		dailyStatsDiv.appendChild(newCasesEl);
 		let newDeathsEl = document.createElement('p')
+		newDeathsEl.setAttribute('class', 'new-deaths-txt');
+		newDeathsEl.setAttribute('id', '')
 		newDeathsEl.textContent = "New Deaths: " + dailyDeaths;
 		dailyStatsDiv.appendChild(newDeathsEl);
 
 		// total stats container + info
 		let totalStatsDiv = document.createElement('div');
-		totalStatsDiv.setAttribute('class', "total-stats");
+		totalStatsDiv.setAttribute('class', 'total-stats-div');
+		totalStatsDiv.setAttribute('id', '');
 		generalStatsDiv.appendChild(totalStatsDiv);
 		let totalCasesEl = document.createElement('p');
+		totalCasesEl.setAttribute('class', 'total-cases-txt');
+		totalCasesEl.setAttribute('id', '');
 		totalCasesEl.textContent = "Total Cases: " + totalCases;
 		totalStatsDiv.appendChild(totalCasesEl);
 		let totalDeathsEl = document.createElement('p')
+		totalDeathsEl.setAttribute('class', 'total-deaths-txt');
+		totalDeathsEl.setAttribute('id', '');
 		totalDeathsEl.textContent = "Total Deaths: " + totalDeaths;
 		totalStatsDiv.appendChild(totalDeathsEl);
 
@@ -139,7 +169,7 @@ function grabData(){
 		let riskDisplayDiv = document.createElement('div');
 		riskLevelDiv.appendChild(riskDisplayDiv);
 
-	
+
 		// for loop creating + appending the risk levels display's divs
 		//TODO: use CSS to style!
 		for (let i = 5; i > 0 ; i--){
@@ -149,12 +179,12 @@ function grabData(){
 			riskDisplayDiv.appendChild(riskDisplay);
 		};
 
-		// risk level describing text 
+		// risk level describing text
 		let riskLevelDescEl = document.createElement('h3');
 		riskLevelDiv.appendChild(riskLevelDescEl);
 		let riskLevelTxtEl = document.createElement('p');
 		riskLevelDiv.appendChild(riskLevelTxtEl);
-		
+
 		//delete after solving
 		let stateNameTBD = "Placeholder"
 
@@ -191,7 +221,7 @@ function grabData(){
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
 
-	// vaccination section 
+	// vaccination section
 		let vaccinationTitle = document.createElement('h3');
 		vaccinationTitle.textContent = "Vaccinations";
 		vaccineStatsDiv.appendChild(vaccinationTitle);
@@ -248,8 +278,8 @@ function grabData(){
 		chartContainer.setAttribute('id', 'myChart')
 		chartContainer.getContext('2d')
 		icuStatsDiv.appendChild(chartContainer);
-		
-	
+
+
 		var icuDonutChart = new Chart(chartContainer, {
 			type: 'doughnut',
 			data: {
@@ -263,15 +293,15 @@ function grabData(){
 					data: [ICUAvailableBeds, ICUNonCovidBeds, ICUCovidUsage]
 
 				}]
-			}, 
+			},
 			options: {
 				cutoutPercentage: 60,
 				animation:{
 					animateScale : true,
 				}
-			}	
+			}
 		});
-		
+
 		icuDonutChart.canvas.parentNode.style.width = '300px';
 		icuDonutChart.canvas.parentNode.style.height = '300px';
 
@@ -288,7 +318,7 @@ function grabData(){
 		return data.filter((el) => el.state === "TX").filter((el) => el.county === "Hartley County");
 		}).then((dataObj) =>{
 			console.log(dataObj)
-		
+
 			let countyTotalCases = dataObj[0].actuals.cases;
 			console.log('County totalCases '+ countyTotalCases );
 			let countyTotalDeaths = dataObj[0].actuals.deaths;
@@ -311,7 +341,7 @@ function grabData(){
 			console.log(countyCompletedNum);
 
 			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
-			console.log('County vaccinesInitiated ' + countyVaccinesInitiated) 
+			console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
 			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation ) * 100).toFixed(1) + '%';
 			console.log(countyInitiatedNum);
 
@@ -333,7 +363,7 @@ function grabData(){
 
 
 			// county card info goes here
-			
+
 
 		})
 	)
@@ -344,13 +374,13 @@ function grabData(){
 
 
 function grabCountyInputs(){
-	for(var i=0; i < 8 ; i++){        
+	for(var i=0; i < 8 ; i++){
 		if(i % 2 == 0){
 			countiesSavedInfo.states.push(localStorage.getItem('countyItem-' + i))
-		} 
+		}
 		else{
 			countiesSavedInfo.counties.push(localStorage.getItem('countyItem-' + i))
-		} 
+		}
 	 }
 };
 
