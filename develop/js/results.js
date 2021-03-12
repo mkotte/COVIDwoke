@@ -657,4 +657,6 @@ grabCountyInputs();
 
 grabStateInputs();
 
-grabData();
+grabStateData();
+
+grabCountyData();

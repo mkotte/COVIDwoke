@@ -24,14 +24,15 @@ header{
 
 header div.header_wrapper{
     height: 125px;
-    padding: 40px 15px 0 15px;
+    padding: 25px 15px 0 15px;
     border-top: 35px solid var(--red);
     border-radius: 50px;
 }
 
 #big_header_text{
     color: var(--beige);
-    font-size: 35px;
+    font-size: 50px;
+    font-weight: 500;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 #sm_header_text{
@@ -46,7 +47,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 section#results{

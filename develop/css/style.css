@@ -1,3 +1,11 @@
+:root{
+    --light: #FDF5EA;
+    --beige: #E6C9AB;
+    --red:#912A23;
+    --dark: #1D2F47;
+    --mint: #7FD2A6;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,31 +14,35 @@
 }
 
 body{
-    background: #222421;
-    /* display: flex;
-    flex-direction: column; */
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
     flex-shrink: 3;
     height: 100%;
 }
 
 header{
-    background: #D6D6D6;
+    background: var(--light);
 }
 
 header div.header_wrapper{
     height: 125px;
-    padding: 40px 15px 0 15px;
+    padding: 25px 15px 0 15px;
+    border-top: 35px solid var(--beige);
+    border-radius: 50px;
 }
 
 #big_header_text{
-    color: #02263E;
-    font-size: 35px;
-    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+    color: var(--beige);
+    font-size: 50px;
+    font-weight: 500;
+    /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
+
 #sm_header_text{
-    color: #02263E;
+    color: var(--beige);
     font-size: 16px;
-    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+    /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
 main{
@@ -38,18 +50,18 @@ main{
     padding: 0 15px 10px 10px;
 }
 
-div.row{
-    /* height: 100%; */
-}
-
 div.mission_wrapper{
-    display: inline-flex;
-    height: 150px;
-    padding: 0 20px 20px 0;
+    background: var(--light);
+    border-top: 1px solid #912a2349;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 175px;
+    padding: 10px 20px 20px 10px;
 }
 
 .mission_header_wrapper{
-    height: fit-content;
+    height: 150px;
     margin: 0;
     padding: 20px 10px;
     /* position: relative;
@@ -60,7 +72,7 @@ div.mission_wrapper{
 }
 
 .mission_header{
-    color: #C6EAC7;
+    color: var(--dark);
     font-size: 28px;
     text-transform: uppercase;
     margin: 0;
@@ -70,38 +82,42 @@ div.mission_wrapper{
 
 .mission_text_wrapper{
     margin: 0;
-    width: 75%;
-    /* position: relative;
-    left: 73px;
-    bottom: 50px; */
+    min-width: 340px;
+    height: auto;
+    padding: 20px 20px 20px 20px;
 }
 
 .mission_text{
-    color: #C6EAC7;
+    color: var(--red);
     font-size: 14px;
 }
 
 .search_bar_wrapper{
-    background: #02263E;
-    border: 5px solid #222421;
+    background: var(--dark);
+    border: 5px solid var(--dark);
+    border-radius: 5px;
     display: flex;
-    /* flex-wrap: nowrap;
-    position: relative;
-    top: 30px; */
-    height: 85px;
-    padding: 0 20px 0 0;
+    justify-content: center;
+    height: auto;
+    padding: 10px 20px 10px 0;
+    width: 100%;
+    margin: 0;
+}
+
+div.search_bar_wrapper.row{
+    margin: 0;
     width: 100%;
 }
 
-.search_bar_text_wrapper{
+/* .search_bar_text_wrapper{
     padding: 30px 0 25px 10px;
     width: 155px;
-}
+} */
 
-.search_bar_text{
+/* .search_bar_text{
     color: #D6D6D6;
     font-size: 15px;
-}
+} */
 
 /* form.search_form,
 div.input-group{
@@ -129,19 +145,34 @@ input[type=text] {
 } */
 
 .custom-btn{
-     /* background:  */
-     border: 0.5px solid #d6d6d6b8;
-    color: #D6D6D6;
+    background: #2d4e79;
+    border: 0.5px solid #d6d6d6cc;
+    color: var(--light);
     font-size: 18px;
- }
+    margin: 10px 4px 4px 4px;
+}
 
-.custom-btn:hover {
-  color: #C6EAC7;
+.custom-btn:hover{
+    background: #223c5e;
+    border-color: #faf9f7e0;
+    color: var(--mint);
 }
 
 .dropdown-menu{
     max-height: 250px;
     overflow-y: auto;
+}
+
+.btn-primary{
+    background: #2d4e79;
+    border: 0.5px solid #d6d6d6cc;
+    color: var(--light);
+}
+
+.btn-primary:hover{
+    background: #223c5e;
+    border-color: #faf9f7e0;
+    color: var(--mint);
 }
 
 /* .dropdown-item{
@@ -150,17 +181,17 @@ input[type=text] {
 } */
 
 .travel_advisory_container{
-    background: #D6D6D6;
-    border-top: 10px solid #222421;
-    border-bottom: 10px solid #222421;
-    border-right: 5px solid #222421;
-    border-left: 5px solid #222421;
-    height: 85px;
+    background: var(--light);
+    border-top: 5px solid #222421;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
 }
 
-.travel_advisory_warning{
-    padding: 5px 50px;
-    align-content: center;
+.alert-danger{
+    padding: 10px;
+    margin: 10px;
 }
 
 .travel_advisory_text{
@@ -177,11 +208,13 @@ input[type=text] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height:auto;
 }
 
 .background_img_screen{
     background-color: #00000095;
     width: 100%;
+    height:auto;
 }
 
 .appreciation_text_wrapper{
@@ -196,7 +229,7 @@ input[type=text] {
     display: flex;
     /* flex-wrap: nowrap; */
     font-size: 35px;
-    color: #CFBDAF;
+    color: var(--mint);
     margin: 0;
     height: 50px;
     line-height: 1;
@@ -221,3 +254,5 @@ input[type=text] {
     padding: 0 20px;
     font-size: 30px;
 }
+
+/* 600px width breaking point */
