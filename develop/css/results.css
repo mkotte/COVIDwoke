@@ -1,3 +1,11 @@
+:root{
+    --light: #FDF5EA;
+    --beige: #E6C9AB;
+    --red:#912A23;
+    --dark: #1D2F47;
+    --mint: #7FD2A6;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,28 +14,30 @@
 }
 
 body{
-    background: #222421;
+    background: var(--light);
     height: 100%;
 }
 
 header{
-    background: #D6D6D6;
+    background: var(--light);
 }
 
 header div.header_wrapper{
     height: 125px;
     padding: 40px 15px 0 15px;
+    border-top: 35px solid var(--red);
+    border-radius: 50px;
 }
 
 #big_header_text{
-    color: #02263E;
+    color: var(--beige);
     font-size: 35px;
-    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+    /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 #sm_header_text{
-    color: #02263E;
+    color: var(--beige);
     font-size: 16px;
-    text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623);
+    /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
 main{
@@ -51,6 +61,7 @@ section#results{
 /*results js set attribute */
 .state-card-div{
     /* border: 0.2px solid #EDE5DC; */
+    background: var(--light);
     max-width: 640px;
     display: flex;
     flex-wrap: wrap;
@@ -67,9 +78,11 @@ section#results{
     padding: 10px;
     width: 100%;
     border-radius: 7px;
+    background: var(--light);
 }
 
 .general-stats-div{
+    background: var(--light);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
@@ -79,6 +92,7 @@ section#results{
 }
 
 .risk-level-div{
+    background: var(--light);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
@@ -88,6 +102,7 @@ section#results{
 }
 
 .vaccine-stats-div{
+    background: var(--light);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
@@ -97,6 +112,7 @@ section#results{
 }
 
 .icu-stats-div{
+    background: var(--light);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
@@ -105,9 +121,13 @@ section#results{
     border-radius: 7px;
 }
 
-.state-name-card-header
+.state-name-card-header{
+    color: var(--red);
+}
 
-.pop-card-header
+.pop-card-header{
+    color: var(--mint);
+}
 
 .gen-stats-header
 
