@@ -63,7 +63,7 @@ function renderStateOps(event) {
 			let savedStateInfo = event.target.offsetParent.children[1].childNodes[1][i].textContent;
 			localStorage.setItem('stateItem-' + i, savedStateInfo);
 		}
-		location.assign('develop' 'html' \results.html');
+		location.href = 'develop/html/results.html';
 
 		// saveStatesSelected.forEach(function (userState, index) {
 
@@ -141,7 +141,7 @@ function renderCountyOps() {
 			let savedCountyInfo = event.target.offsetParent.children[1].childNodes[1][m].textContent;
 			localStorage.setItem('countyItem-' + m, savedCountyInfo);
 		}
-
+		location.href = 'develop/html/results.html';
 		//call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
 
