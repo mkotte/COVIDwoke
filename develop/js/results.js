@@ -15,7 +15,7 @@ let countiesSavedInfo = {
 console.log(stateAbbrv.indexOf('OH'));
 
 
-console.log(statesFullName)
+console.log(statesFullName);
 
 
 // creating the responsive cards displaying results info
@@ -25,49 +25,33 @@ function grabCountyData(stateTarget , countyTarget) {
 	(fetch(countyUrl).then((response) => {
 		return response.json();
 	}).then((data) => {
-		console.log(data);
-		console.log(stateTarget);
 		return data.filter((el) => el.state === stateTarget).filter((el) => el.county === countyTarget);
 	}).then((dataObj) => {
 		
-
 		let countyTotalCases = dataObj[0].actuals.cases;
 		let countyTotalDeaths = dataObj[0].actuals.deaths;
 		//daily cases per 100k
 		let countyDailyCases = dataObj[0].actuals.newCases;
 		let countyDailyDeaths = dataObj[0].actuals.newDeaths;
 	
-		
-
 		//infection rate rounded up to hundreths
 		let countyInfectionRate = (dataObj[0].metrics.infectionRate)
 		Number.parseFloat(countyInfectionRate).toFixed(2);
 		
-
+		//population
 		let countyPopulation = dataObj[0].population;
-
 
 		//vaccination stats should display based on population
 		let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
-		console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
 		let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation) * 100).toFixed(1) + '%';
-		console.log(countyCompletedNum);
-
 		let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
-		console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
 		let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation) * 100).toFixed(1) + '%';
-		console.log(countyInitiatedNum);
-
 		let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
-		console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
 
 		//ICU beds
-		let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity
-		console.log('County ICUCapacity ' + countyICUCapacity);
-		let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid
-		console.log('County ICUCovidUsage ' + countyICUCovidUsage);
-		let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal
-		console.log('County ICUTotalUsage ' + countyICUTotalUsage);
+		let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity;	
+		let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid;		
+		let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal;		
 		let countyAvailableBeds = countyICUCapacity - countyICUTotalUsage;
 		let countyNonCovidBeds = countyICUTotalUsage - countyICUCovidUsage;
 
