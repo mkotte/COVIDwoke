@@ -22,143 +22,6 @@ const countyDropdownEl = document.querySelectorAll('.county-dropdown');
 const coStInputTxtEl = document.querySelectorAll('.co_state_input_txt');
 const coInputTxtEl = document.querySelectorAll('.co_input_txt');
 
-let saveStatesSelected = [];
-let saveCountiesSelected = [{
-
-	state: [],
-	county: []
-},
-{
-	state: [],
-	county: []
-},
-{
-	state: [],
-	county: []
-},
-{
-	state: [],
-	county: []
-}];
-
-
-//function grabbing data
-function grabData() {
-	fetch(stateUrl).then((response) => {
-		return response.json()
-	}).then((data) => {
-		// console.log(data)
-
-		return data.find((el) => el.state === "AK");
-
-		// function find(func) {
-		// 	for (let i = 0; i < data.length ; i++){
-		// 		var value = func(data[i]);
-		// 		if (value) {
-		// 			return data[i]	}}}
-
-	}).then((dataObj) => {
-		console.log(dataObj)
-		let totalCases = dataObj.actuals.cases;
-		console.log('totalCases ' + totalCases);
-		let totalDeaths = dataObj.actuals.deaths;
-		console.log('totalDeaths ' + totalDeaths);
-		//daily cases per 100k
-		let dailyCases = dataObj.actuals.newCases;
-		console.log('dailyCases ' + dailyCases);
-
-		//infection rate rounded up to hundreths
-		let infectionRate = (dataObj.metrics.infectionRate).toFixed(2);
-		console.log('infectionRate ' + infectionRate);
-
-		let population = dataObj.population
-		console.log(population);
-
-		//vaccination stats should display based on population
-		let vaccinesCompleted = dataObj.actuals.vaccinationsCompleted;
-		console.log('vaccinesCompleted ' + vaccinesCompleted)
-		let vaccinesCompletedNum = (((vaccinesCompleted) / population) * 100).toFixed(1) + '%'
-		console.log(vaccinesCompletedNum);
-
-		let vaccinesInitiated = dataObj.actuals.vaccinationsInitiated;
-
-		console.log('vaccinesInitiated ' + vaccinesInitiated)
-		let vaccinesInitiatedNum = (((vaccinesInitiated) / population) * 100).toFixed(1) + '%'
-		console.log(vaccinesInitiatedNum)
-
-		let vaccinesDistributed = dataObj.actuals.vaccinesDistributed;
-		console.log('vaccinesDistributed ' + vaccinesDistributed)
-
-		//ICU beds
-		let ICUCapacity = dataObj.actuals.icuBeds.capacity
-		console.log('ICUCapacity ' + ICUCapacity);
-		let ICUCovidUsage = dataObj.actuals.icuBeds.currentUsageCovid
-		console.log('ICUCovidUsage ' + ICUCovidUsage);
-		let ICUTotalUsage = dataObj.actuals.icuBeds.currentUsageTotal
-		console.log('ICUTotalUsage ' + ICUTotalUsage);
-
-		//riskLevel
-		let riskLevel = dataObj.riskLevels.overall
-		console.log('Risk Level ' + riskLevel)
-
-	})
-		.then(fetch(countyUrl).then((response) => {
-			return response.json();
-		}).then((data) => {
-			// console.log(data)
-			return data.filter((el) => el.state === "OH").filter((el) => el.county === "Franklin County");
-		}).then((dataObj) => {
-			console.log(dataObj)
-
-			let countyTotalCases = dataObj[0].actuals.cases;
-			console.log('County totalCases ' + countyTotalCases);
-			let countyTotalDeaths = dataObj[0].actuals.deaths;
-			console.log('County totalDeaths ' + countyTotalDeaths);
-			//daily cases per 100k
-			let countyDailyCases = dataObj[0].actuals.newCases;
-			console.log('County dailyCases ' + countyDailyCases);
-
-			//infection rate rounded up to hundreths
-			let countyInfectionRate = (dataObj[0].metrics.infectionRate).toFixed(2);
-			console.log('County infectionRate ' + countyInfectionRate);
-
-			let countyPopulation = dataObj[0].population;
-
-
-			//vaccination stats should display based on population
-			let countyVaccinesCompleted = dataObj[0].actuals.vaccinationsCompleted;
-			console.log('County vaccinesCompleted ' + countyVaccinesCompleted)
-			let countyCompletedNum = (((countyVaccinesCompleted) / countyPopulation) * 100).toFixed(1) + '%';
-			console.log(countyCompletedNum);
-
-			let countyVaccinesInitiated = dataObj[0].actuals.vaccinationsInitiated;
-			console.log('County vaccinesInitiated ' + countyVaccinesInitiated)
-			let countyInitiatedNum = (((countyVaccinesInitiated) / countyPopulation) * 100).toFixed(1) + '%';
-			console.log(countyInitiatedNum);
-
-			let countyVaccinesDistributed = dataObj[0].actuals.vaccinesDistributed;
-			console.log('County vaccinesDistributed ' + countyVaccinesDistributed)
-
-			//ICU beds
-			let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity
-			console.log('County ICUCapacity ' + countyICUCapacity);
-			let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid
-			console.log('County ICUCovidUsage ' + countyICUCovidUsage);
-			let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal
-			console.log('County ICUTotalUsage ' + countyICUTotalUsage);
-
-			//riskLevel
-			let countyRiskLevel = dataObj[0].riskLevels.overall
-			console.log('County Risk Level ' + countyRiskLevel)
-		})
-		)
-};
-
-//results page
-grabData();
-
-
-
 //testing api abilities / formats
 // function apiTesting(){
 // 	let api= 'https://api.covidactnow.org/v2/state/OH.json?apiKey=' + apiKey;
@@ -221,12 +84,12 @@ function renderStateOps(event) {
 	}
 	//event listener for SUBMIT STATE modal
 	stSubmitBtnEl.addEventListener('click', function (event) {
-		console.log(event);
-		console.log(event.target.offsetParent.children[1].childNodes[1][0].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][1].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][2].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][3].textContent);
+		
 
+		for (let i=0; i < 4; i++){
+			let savedStateInfo = event.target.offsetParent.children[1].childNodes[1][i].textContent;
+			localStorage.setItem('stateItem-' + i, savedStateInfo);
+		}
 		// saveStatesSelected.forEach(function (userState, index) {
 
 
@@ -300,15 +163,13 @@ function renderCountyOps() {
 		event.preventDefault();
 
 		//use event to access user input
-		console.log(event);
-		console.log(event.target.offsetParent.children[1].childNodes[1][0].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][1].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][2].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][3].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][4].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][5].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][6].textContent);
-		console.log(event.target.offsetParent.children[1].childNodes[1][7].textContent);
+		
+		
+		for (let m=0; m < 8; m++){
+			let savedCountyInfo = event.target.offsetParent.children[1].childNodes[1][m].textContent;
+			localStorage.setItem('countyItem-' + m, savedCountyInfo);
+		}
+
 		//call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
 
