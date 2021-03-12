@@ -50,8 +50,6 @@ function renderStateOps(event) {
 
 				let stateSelected = event.target.textContent;
 				event.target.parentNode.previousSibling.previousSibling.innerHTML = stateSelected;
-				console.log(event.target.parentNode.previousSibling.previousSibling);
-				console.log(event.target.textContent);
 			})
 			// return stateSelected;
 			stateDropdownEl[i].appendChild(stOptions);
@@ -65,6 +63,8 @@ function renderStateOps(event) {
 			let savedStateInfo = event.target.offsetParent.children[1].childNodes[1][i].textContent;
 			localStorage.setItem('stateItem-' + i, savedStateInfo);
 		}
+		location.assign('develop' 'html' \results.html');
+
 		// saveStatesSelected.forEach(function (userState, index) {
 
 		//call function to render search history within this function for access to needed variables
