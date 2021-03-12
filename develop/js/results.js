@@ -3,29 +3,23 @@ let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
 let stateAbbrv = ["AK",	"AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA",  "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT","WA", "WI", "WV", "WY"];
 let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 let stateNames= ['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Iowa','Idaho','Illinois','Indiana','Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina','North Dakota','Nebraska','New Hampshire','New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont','Washington','Wisconsin','West Virginia','Wyoming']
-console.log(stateAbbrv.length);
-console.log(stateNames.length)
-// creating the responsive cards displaying results info
 let resultsContainer = document.getElementById('results')
+let statesSaved = [];
+let countiesSavedInfo = {
+	states : [],
+	counties: []
+};
 
+// creating the responsive cards displaying results info
 
 function grabData(){
 	fetch(stateUrl).then((response) => {
 		return response.json()
 	}).then((data) => {
-		// console.log(data)
-
 		return data.find((el) => el.state === "AK");
-
-		// function find(func) {
-		// 	for (let i = 0; i < data.length ; i++){
-		// 		var value = func(data[i]);
-		// 		if (value) {
-		// 			return data[i]	}}}			
 
 	}).then((dataObj) => {
 		console.log(dataObj)
-		
 
 		// STATISTICS
 		// total stats
@@ -79,8 +73,6 @@ function grabData(){
 		let riskLevel = dataObj.riskLevels.overall
 		console.log('Risk Level ' + riskLevel)
 
-		
-		
 		// creating +appending information sections to cards
 		let stateCardEL = document.createElement('div');
 		let cardHeader = document.createElement('div')
@@ -95,7 +87,6 @@ function grabData(){
 		stateCardEL.appendChild(icuStatsDiv);
 		resultsContainer.appendChild(stateCardEL);
 
-
 	//header section w/ population
 		//TODO: use selected state w text variable stateName to display name of state
 		let stateNameEl = document.createElement('h3');
@@ -104,7 +95,6 @@ function grabData(){
 		let populationEl = document.createElement('h3')
 		populationEl.textContent = "Population: " + population;
 		cardHeader.appendChild(populationEl);
-
 
 	// general stats card section
 		let generalStatsTitle = document.createElement('h3');
@@ -342,26 +332,37 @@ function grabData(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+			// county card info goes here
+			
 
 		})
 	)
 };
 
-	
-    
 
+
+
+
+function grabCountyInputs(){
+	for(var i=0; i < 8 ; i++){        
+		if(i % 2 == 0){
+			countiesSavedInfo.states.push(localStorage.getItem('countyItem-' + i))
+		} 
+		else{
+			countiesSavedInfo.counties.push(localStorage.getItem('countyItem-' + i))
+		} 
+	 }
+};
+
+function grabStateInputs(){
+	for (let i = 0; i < 4 ; i++){
+		statesSaved.push(localStorage.getItem('stateItem-' + i));
+	}
+}
+console.log(countiesSavedInfo);
+
+grabCountyInputs();
+
+grabStateInputs();
 
 grabData();
-
