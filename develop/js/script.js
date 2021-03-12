@@ -42,6 +42,7 @@ function renderStateOps(event) {
 			let stOptions = document.createElement('a');
 			stOptions.setAttribute('class', 'dropdown-item');
 			stOptions.setAttribute('href', '#');
+			// stOptions.setAttribute('data-boundary', 'scrollParent');
 			// stOptions.setAttribute('data-state', stateAbbrvArray[j]);
 			stOptions.textContent = stateAbbrvArray[j];
 
@@ -58,16 +59,13 @@ function renderStateOps(event) {
 	}
 	//event listener for SUBMIT STATE modal
 	stSubmitBtnEl.addEventListener('click', function (event) {
-		
+
 
 		for (let i=0; i < 4; i++){
 			let savedStateInfo = event.target.offsetParent.children[1].childNodes[1][i].textContent;
 			localStorage.setItem('stateItem-' + i, savedStateInfo);
 		}
 		// saveStatesSelected.forEach(function (userState, index) {
-
-
-		// })
 
 		//call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
@@ -96,7 +94,7 @@ function renderCountyOps() {
 				let coStateSelected = event.target.textContent;
 
 				//regain value of i in scope
-				let l = i;
+				// let l = i;
 
 				event.target.parentNode.previousSibling.previousSibling.innerHTML = coStateSelected;
 
@@ -117,8 +115,8 @@ function renderCountyOps() {
 						coOptions.setAttribute('href', '#');
 						coOptions.textContent = counties[k];
 
-						console.log(countyDropdownEl, l)
-						countyDropdownEl[l].appendChild(coOptions);
+						console.log(countyDropdownEl, i)
+						countyDropdownEl[i].appendChild(coOptions);
 
 						coOptions.addEventListener('click', function (event) {
 
@@ -137,8 +135,8 @@ function renderCountyOps() {
 		event.preventDefault();
 
 		//use event to access user input
-		
-		
+
+
 		for (let m=0; m < 8; m++){
 			let savedCountyInfo = event.target.offsetParent.children[1].childNodes[1][m].textContent;
 			localStorage.setItem('countyItem-' + m, savedCountyInfo);
