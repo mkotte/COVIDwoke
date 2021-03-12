@@ -139,6 +139,16 @@ input[type=text] {
   color: #C6EAC7;
 }
 
+.dropdown-menu{
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* .dropdown-item{
+    overflow: auto;
+
+} */
+
 .travel_advisory_container{
     background: #D6D6D6;
     border-top: 10px solid #222421;
@@ -255,7 +265,7 @@ input[type=text] {
     height:34px;
     border: 3px solid black;
     margin-left: 0;
-    
+
 }
 
 /* vaccine progress bars here */
@@ -263,7 +273,7 @@ input[type=text] {
 .completedBar{
     border-radius: 40px;
     background-color: red;
-    height:20px; 
+    height:20px;
     width: 150px;
 }
 
@@ -271,7 +281,7 @@ input[type=text] {
     border-radius: 40px 0 0 40px;
     background-color: green;
     height:20px;
-   
+
 }
 
 
