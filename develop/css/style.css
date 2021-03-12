@@ -28,8 +28,7 @@ header{
 header div.header_wrapper{
     height: 125px;
     padding: 25px 15px 0 15px;
-    border-top: 35px solid var(--beige);
-    border-radius: 50px;
+    border-top: 15px solid var(--beige);
 }
 
 #big_header_text{
