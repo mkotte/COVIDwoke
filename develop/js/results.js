@@ -247,7 +247,6 @@ function grabCountyData(stateTarget , countyTarget) {
 		icuDonutChart.canvas.parentNode.style.width = '300px';
 		icuDonutChart.canvas.parentNode.style.height = '300px';
 	})
-	removeSavedCountyInfo()
 };
 
 function grabStateData(target) {
@@ -471,16 +470,22 @@ function grabStateData(target) {
 		icuDonutChart.canvas.parentNode.style.width = '300px';
 		icuDonutChart.canvas.parentNode.style.height = '300px';
 	})
-	removeSavedStateInfo();
 }
 
-function removeSavedStateInfo(){
+function removeSavedStateInfo(){	
 	console.log(2);
+	for (let i = 0; i < 4; i++){
+		localStorage.removeItem('stateItem-' + i);
+	}
+
 };
 function removeSavedCountyInfo(){
-
+	for (let i = 0; i < 8; i++){
+		localStorage.removeItem('countyItem-' + i)
+	}
 };
-
+	// removeSavedStateInfo();
+	// removeSavedCountyInfo()
 detemineDataPath();
 // grabCountyInputs();
 // grabStateInputs();
