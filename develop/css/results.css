@@ -25,8 +25,7 @@ header{
 header div.header_wrapper{
     height: 125px;
     padding: 25px 15px 0 15px;
-    border-top: 35px solid var(--red);
-    border-radius: 50px;
+    border-top: 15px solid var(--beige);
 }
 
 #big_header_text{
@@ -43,7 +42,8 @@ header div.header_wrapper{
 
 main{
     height: 100%;
-    padding: 0 20px 20px 20px;
+    width: 100%;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +53,7 @@ section#results{
     width: 100%;
     height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 0;
@@ -62,61 +63,73 @@ section#results{
 .state-card-div{
     /* border: 0.2px solid #EDE5DC; */
     background: var(--light);
-    max-width: 640px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: space-evenly;
-    justify-content: space-between;
-    width: 100%;
+    max-width: 650px;
+    min-width: 340px;
+    /*align-items: space-evenly;
+    justify-content: space-between; */
+    width: 50%;
     transition: all 0.3s ease;
     box-shadow: opx 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .card-header-div{
     border: 0.1px solid #EDE5DC;
+    display: flex;
+    justify-content: space-evenly;
     max-width: 640px;
     padding: 10px;
     width: 100%;
     border-radius: 7px;
-    background: var(--light);
+    background: var(--beige);
+}
+
+.stats-wrapper{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .general-stats-div{
-    background: var(--light);
+    background: var(--dark);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
     min-height: 320px;
+    margin: 0;
+    width: 50%;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
 }
 
 .risk-level-div{
-    background: var(--light);
+    background: var(--dark);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
     min-height: 320px;
+    margin: 0;
+    width: 50%;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
 }
 
 .vaccine-stats-div{
-    background: var(--light);
+    background: var(--dark);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
     min-height: 320px;
+    margin: 0;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
 }
 
 .icu-stats-div{
-    background: var(--light);
+    background: var(--dark);
     border: 0.1px solid #EDE5DC;
     max-width: 320px;
     min-width: 300px;
     min-height: 320px;
+    margin: 0;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
 }
@@ -126,67 +139,132 @@ section#results{
 }
 
 .pop-card-header{
+    color: var(--dark);
+}
+
+.gen-stats-header{
+    color: var(--beige);
+}
+
+.daily-stats-div{
     color: var(--mint);
 }
 
-.gen-stats-header
+.new-cases-txt{
+    color: var(--mint);
+}
 
-.daily-stats-div
+.new-deaths-txt{
+    color: var(--mint);
+}
 
-.new-cases-txt
+.total-stats{
+    color: var(--mint);
+}
 
-.new-deaths-txt
+.total-cases-txt{
+    color: var(--mint);
+}
 
-.total-stats-div
+.total-deaths-txt{
+    color: var(--mint);
+}
 
-.total-cases-txt
-
-.total-deaths-txt
+.infection-rate-txt{
+    color: var(--mint);
+}
 
 /* risk level displays div's styled here */
+.risk-level-header{
+    color: var(--beige);
+}
+
+.risk-level-header2{
+    color: var(--mint);
+}
+
+.risk-level-desc-header{
+    color: var(--mint);
+}
+
+.risk-level-txt{
+    color: var(--mint);
+}
+
+#risk-wrapper{
+    display: flex;
+    height: 28px;
+    justify-content: center;
+    color: var(--mint);
+}
+
+
 .riskLevel-5{
     background-color: red;
     width:24px;
     height:30px;
-    margin-left: 2px;
+    margin: 3.5px;
     border-radius: 40% 40% 0 0;
+    transform: rotate(-90deg);
 }
 
 .riskLevel-4{
     background-color:orange;
     width:24px;
     height:30px;
-    margin-left: 2px;
+    margin: 3.5px;
+    transform: rotate(-90deg);
 }
 
 .riskLevel-3{
     background-color:yellow;
     width:24px;
     height:30px;
-    margin-left: 2px;
+    margin: 3.5px;
+    transform: rotate(-90deg);
 }
 
 .riskLevel-2{
     background-color: greenyellow;
     width:24px;
     height:30px;
-    margin-left: 2px;
+    margin: 3.5px;
+    transform: rotate(-90deg);
 }
 
 .riskLevel-1{
     background-color:green;
     width:24px;
     height:30px;
-    margin-left: 2px;
+    margin: 3.5px;
     border-radius: 0 0 40% 40%;
+    transform: rotate(-90deg);
 }
 
 .selected-level{
     width:28px;
     height:34px;
     border: 3px solid black;
-    margin-left: 0;
+    margin: 3px 4px 3px 4px;
+    z-index: 10;
+}
 
+/* VACCINATIONS STYLES */
+
+.vaccination-header{
+    color: var(--beige);
+}
+
+/* .completed{
+
+} */
+
+.vaccinations-completed-txt{
+    color: var(--mint);
+}
+
+.completed-percentages-txt{
+    color: var(--mint);
 }
 
 /* vaccine progress bars here */
@@ -219,4 +297,4 @@ section#results{
     height:20px;
 }
 
-@media screen and (max-width: 640)
+@media screen and (max-width: 640){}
