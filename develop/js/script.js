@@ -144,10 +144,9 @@ function renderCountyOps() {
 		location.href = 'develop/html/results.html';
 		//call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
-
+href = 
 		// renderSearchHistory();
 	});
-
 };
 
 stSearchBtnEl.addEventListener('click', renderStateOps);
