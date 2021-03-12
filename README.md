@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Stay COVID Informed
+# COVID Woke
 
 ## Description
 
