@@ -22,32 +22,6 @@ const countyDropdownEl = document.querySelectorAll('.county-dropdown');
 const coStInputTxtEl = document.querySelectorAll('.co_state_input_txt');
 const coInputTxtEl = document.querySelectorAll('.co_input_txt');
 
-//testing api abilities / formats
-// function apiTesting(){
-// 	let api= 'https://api.covidactnow.org/v2/state/OH.json?apiKey=' + apiKey;
-// 	let api2= 'https://api.covidactnow.org/v2/state/OH.timeseries.json?apiKey=' + apiKey;
-// 	let api3= 'https://api.covidactnow.org/v2/county/OH.json?apiKey=' + apiKey;
-// 	fetch(api).then((response) => {
-// 		return response.json()
-// 	}).then((data) => {
-// 		console.log(data)
-// 	}).then(fetch(api2).then((response) => {
-// 	return response.json()
-// 	}).then((data) => {
-// 	console.log(data)
-// 	})).then(fetch(api3).then((response) => {
-// 	return response.json()
-// 	}).then((data) => {
-// 	console.log(data)
-
-//county map to iterate through each dropdown option
-// 	let counties = data.map((countyData) => countyData.county);
-// 	console.log(counties)
-
-//  	}
-// ))
-// };
-// apiTesting();
 
 //TODO: on click of state and couty modals
 //use state abbrev variable to populate state dropdowns
@@ -180,49 +154,6 @@ function renderCountyOps() {
 
 stSearchBtnEl.addEventListener('click', renderStateOps);
 coSearchBtnEl.addEventListener('click', renderCountyOps);
-
-
-
-
-//TODO: store search history in local storage
-
-
-// COVID COMPARISON SITE
-// index.html - homepage describing what it is / our mission etc
-// homepage includes 2 seperate modals, 1 for state comparisons, the other for counties
-// the modals will have dropdown's with options that will plug into the API's
-
-// Second page will be the results page
-// On this page we will have the selected states or counties and their statistics displayed on cards in a way that is easy to read
-// Would like to color code the severity of the statistics and create a graphic that we can use to show risk level's
-
-
-//TODO: psuedo-coding;
-// Start the html index page and the modals
-
-
-//TODO: Figure out how to display the options for different counties based on state selected in the modal's dropdowns (.map, onChange(etc), )
-// yt vid for chart.js pi chart for icu beds + css divs on page for risk level
-// Find API including counties then use for loop to append options to form (select in bootstrap)
-
-// Add a listener to each form's submit buttons
-// bringing to the results page
-
-// Determine which statistics to use from the API's and how to request information
-// Append information to the results page
-// footer of pages add names / links to github + linkedin
-
-
-// TODO: Project Plan
-// index page - top to bottom - starting with all the id's / form buttons
-// js - use .map for county options on form
-// save selected form options to local storage, grab data on results page
-// results page - place cards on top of jumbotron
-// grab chart.js
-
-
-
-
 
 // county/state search form
 $('#search-modal').on('show.bs.modal', function (event) {
