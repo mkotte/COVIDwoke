@@ -447,7 +447,7 @@ function grabStateData(target) {
 		}
 		else {
 			riskLevelDescEl.textContent = "On track for containment";
-			riskLevelTxtEl.textContent = stateNames[stateNum] + "is on track to contain COVID. Cases are steadily decreasing and " + stateNameTBD + " COVID preparedness meets or exceeds international standards."
+			riskLevelTxtEl.textContent = stateNames[stateNum] + "is on track to contain COVID. Cases are steadily decreasing and " + stateNames[stateNum] + " COVID preparedness meets or exceeds international standards."
 			let riskDisplaySelected = document.getElementById('level-1'+ '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
