@@ -28,8 +28,7 @@ header{
 header div.header_wrapper{
     height: 125px;
     padding: 25px 15px 0 15px;
-    border-top: 35px solid var(--beige);
-    border-radius: 50px;
+    border-top: 15px solid var(--beige);
 }
 
 #big_header_text{
@@ -254,5 +253,38 @@ input[type=text] {
     padding: 0 20px;
     font-size: 30px;
 }
+
+/* footer styling below*/
+footer{
+
+}
+footer h4{
+
+}
+.creators{
+    display:flex;
+    justify-content: center;
+}
+.creators a{
+    display: inline-block;
+    width:30px;
+    height:30px;
+    background: #222421;
+    margin:5px;
+    border-radius: 30%;
+    box-shadow: 0 4px 10px -4px #a4b5ff59;
+    color:var(--dark);
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+
+}
+
+.symbols{
+
+   font-size:20px;
+
+}
+
 
 /* 600px width breaking point */
