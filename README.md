@@ -15,5 +15,5 @@ Users are able to search specific states and counties for in-depth information a
 
 ### Links
 
-[DeployedApp(GitHub Pages)](<https://mkotte.github.io/project01/>)
-[GitHub Repo](<https://github.com/mkotte/project01>)
+[DeployedApp(GitHub Pages)](<https://mkotte.github.io/COVIDwoke>)
+[GitHub Repo](<https://github.com/mkotte/COVIDwoke>)
