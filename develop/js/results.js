@@ -179,7 +179,7 @@ function grabCountyData(stateTarget , countyTarget) {
 		//TODO: use CSS to style!
 		for (let i = 5; i > 0; i--) {
 			let riskDisplay = document.createElement('div');
-			riskDisplay.setAttribute("class", "riskLevel-" + i );
+			riskDisplay.setAttribute("class", "riskLevel-" + i);
 			riskDisplay.setAttribute("id", "level-" + i + "-" + countyTarget);
 			riskDisplayWrapper.appendChild(riskDisplay);
 		};
@@ -194,31 +194,31 @@ function grabCountyData(stateTarget , countyTarget) {
 		if (countyRiskLevel == 5) {
 			riskLevelDescEl.textContent = "Severe outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is currently experiencing a severe outbreak. Take all possible precautions to avoid exposure."
-			let riskDisplaySelected = document.getElementById('level-5'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-5' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-5');
 		}
 		else if (countyRiskLevel == 4) {
 			riskLevelDescEl.textContent = "Active outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is either actively experiencing an outbreak or is at extreme risk. COVID cases are exponentially growing and/or " + countyTarget + " COVID preparedness is significantly below international standards."
-			let riskDisplaySelected = document.getElementById('level-4'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-4' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-4');
 		}
 		else if (countyRiskLevel == 3) {
 			riskLevelDescEl.textContent = "At risk of outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is at risk of an outbreak. COVID cases are either increasing at a rate likely to overwhelm hospitals and/or the state’s COVID preparedness is below international standards."
-			let riskDisplaySelected = document.getElementById('level-3'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-3' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-3');
 		}
 		else if (countyRiskLevel == 2) {
 			riskLevelDescEl.textContent = "Slow disease growth";
 			riskLevelTxtEl.textContent = "Covid in " + countyTarget + " is spreading in a slow and controlled fashion, and " + countyTarget + " COVID preparedness meets international standards."
-			let riskDisplaySelected = document.getElementById('level-2'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-2' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-2');
 		}
 		else {
 			riskLevelDescEl.textContent = "On track for containment";
 			riskLevelTxtEl.textContent = countyTarget + " is on track to contain COVID. Cases are steadily decreasing and " + countyTarget + " COVID preparedness meets or exceeds international standards."
-			let riskDisplaySelected = document.getElementById('level-1'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-1' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
 
@@ -452,25 +452,25 @@ function grabStateData(target) {
 		if (riskLevel == 5) {
 			riskLevelDescEl.textContent = "Severe outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is currently experiencing a severe outbreak. Take all possible precautions to avoid exposure."
-			let riskDisplaySelected = document.getElementById('level-5'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-5' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-5');
 		}
 		else if (riskLevel == 4) {
 			riskLevelDescEl.textContent = "Active outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is either actively experiencing an outbreak or is at extreme risk. COVID cases are exponentially growing and/or " + stateNames[stateNum] + " COVID preparedness is significantly below international standards."
-			let riskDisplaySelected = document.getElementById('level-4'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-4' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-4');
 		}
 		else if (riskLevel == 3) {
 			riskLevelDescEl.textContent = "At risk of outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is at risk of an outbreak. COVID cases are either increasing at a rate likely to overwhelm hospitals and/or the state’s COVID preparedness is below international standards."
-			let riskDisplaySelected = document.getElementById('level-3'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-3' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-3');
 		}
 		else if (riskLevel == 2) {
 			riskLevelDescEl.textContent = "Slow disease growth";
 			riskLevelTxtEl.textContent = "Covid in " + stateNames[stateNum] + " is spreading in a slow and controlled fashion, and " + stateNames[stateNum] + " COVID preparedness meets international standards."
-			let riskDisplaySelected = document.getElementById('level-2'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-2' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-2');
 		}
 		else {
