@@ -82,39 +82,65 @@ function grabCountyData(stateTarget , countyTarget) {
 		//riskLevel
 		let countyRiskLevel = dataObj[0].riskLevels.overall
 		console.log('County Risk Level ' + countyRiskLevel)
-		// county card info goes here
+
+
+	//DOM Manipulation Here
 		// creating +appending information sections to cards
 		let countyCardEL = document.createElement('div');
+		countyCardEL.setAttribute('class', 'state-card-div');
+		countyCardEL.setAttribute('id', '');
 		let cardHeader = document.createElement('div');
+		cardHeader.setAttribute('class', 'card-header-div');
+		cardHeader.setAttribute('id', '');
+		let statsWrapper = document.createElement('div');
+		statsWrapper.setAttribute('class', 'stats-wrapper');
 		let generalStatsDiv = document.createElement('div');
+		generalStatsDiv.setAttribute('class', 'general-stats-div');
+		generalStatsDiv.setAttribute('id', '');
 		let riskLevelDiv = document.createElement('div');
+		riskLevelDiv.setAttribute('class', 'risk-level-div');
+		riskLevelDiv.setAttribute('id', '');
 		let vaccineStatsDiv = document.createElement('div');
+		vaccineStatsDiv.setAttribute('class', 'vaccine-stats-div');
+		vaccineStatsDiv.setAttribute('id', '');
 		let icuStatsDiv = document.createElement('div');
+		icuStatsDiv.setAttribute('class', 'icu-stats-div');
+		icuStatsDiv.setAttribute('id', '');
 		countyCardEL.appendChild(cardHeader);
-		countyCardEL.appendChild(generalStatsDiv);
-		countyCardEL.appendChild(riskLevelDiv);
-		countyCardEL.appendChild(vaccineStatsDiv);
-		countyCardEL.appendChild(icuStatsDiv);
+		countyCardEL.appendChild(statsWrapper);
+		statsWrapper.appendChild(generalStatsDiv);
+		statsWrapper.appendChild(riskLevelDiv);
+		statsWrapper.appendChild(vaccineStatsDiv);
+		statsWrapper.appendChild(icuStatsDiv);
 		resultsContainer.appendChild(countyCardEL);
 
 		//header section w/ population
 		let countyNameEl = document.createElement('h3');
+		countyNameEl.setAttribute('class', 'state-name-card-header');
+		countyNameEl.setAttribute('id', '');
 		countyNameEl.textContent = countyTarget +', ' + stateTarget;
 		cardHeader.appendChild(countyNameEl);
 		let populationEl = document.createElement('h3');
+		populationEl.setAttribute('class', 'pop-card-header');
+		populationEl.setAttribute('id', '');
 		populationEl.textContent = "Population: " + countyPopulation;
 		cardHeader.appendChild(populationEl);
 
 		// general stats card section
 		let generalStatsTitle = document.createElement('h3');
-		generalStatsTitle.textContent = "General Stats";
+		generalStatsTitle.setAttribute('class', 'gen-stats-header');
+		generalStatsTitle.setAttribute('id', '');
+		generalStatsTitle.textContent = "General Stats";	
 		generalStatsDiv.appendChild(generalStatsTitle);
 
 		// daily stats container + info
 		let dailyStatsDiv = document.createElement('div');
 		dailyStatsDiv.setAttribute('class', "daily-stats");
+		dailyStatsDiv.setAttribute('id', '');
 		generalStatsDiv.appendChild(dailyStatsDiv);
 		let newCasesEl = document.createElement('p');
+		newCasesEl.setAttribute('class', 'new-cases-txt');
+		newCasesEl.setAttribute('id', '');
 		newCasesEl.textContent = "New Cases: " + countyDailyCases;
 		dailyStatsDiv.appendChild(newCasesEl);
 		let newDeathsEl = document.createElement('p')
@@ -144,8 +170,10 @@ function grabCountyData(stateTarget , countyTarget) {
 		let riskLevelTitle = document.createElement('h3');
 		riskLevelTitle.textContent = "Risk Level";
 		riskLevelDiv.appendChild(riskLevelTitle);
-		let riskDisplayDiv = document.createElement('div');
-		riskLevelDiv.appendChild(riskDisplayDiv);
+		let riskDisplayWrapper = document.createElement('div');
+		riskDisplayWrapper.setAttribute('id', "risk-wrapper");
+		riskDisplayWrapper.style.display ='flex';
+		riskLevelDiv.appendChild(riskDisplayWrapper);
 
 		// for loop creating + appending the risk levels display's divs
 		//TODO: use CSS to style!
@@ -153,7 +181,7 @@ function grabCountyData(stateTarget , countyTarget) {
 			let riskDisplay = document.createElement('div');
 			riskDisplay.setAttribute("class", "riskLevel-" + i );
 			riskDisplay.setAttribute("id", "level-" + i + "-" + countyTarget);
-			riskDisplayDiv.appendChild(riskDisplay);
+			riskDisplayWrapper.appendChild(riskDisplay);
 		};
 
 		// risk level describing text 
@@ -447,7 +475,7 @@ function grabStateData(target) {
 		}
 		else {
 			riskLevelDescEl.textContent = "On track for containment";
-			riskLevelTxtEl.textContent = stateNames[stateNum] + "is on track to contain COVID. Cases are steadily decreasing and " + stateNames[stateNum] + " COVID preparedness meets or exceeds international standards."
+			riskLevelTxtEl.textContent = stateNames[stateNum] + " is on track to contain COVID. Cases are steadily decreasing and " + stateNames[stateNum] + " COVID preparedness meets or exceeds international standards."
 			let riskDisplaySelected = document.getElementById('level-1'+ '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
@@ -541,6 +569,16 @@ function removeSavedCountyInfo(){
 	localStorage.removeItem('countyItem-' + i)
 	}
 };
+
+let returnButton = document.querySelector('#return-btn');
+returnButton.addEventListener('click', function(event){
+	event.preventDefault;
+	removeSavedCountyInfo();
+	removeSavedStateInfo();
+	location.href = '../../index.html'
+
+})
+
 // removeSavedStateInfo();
 // removeSavedCountyInfo()
 determineDataPath();
