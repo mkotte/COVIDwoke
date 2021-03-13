@@ -55,7 +55,6 @@ header div.header_wrapper{
     font-size: 18px;
     margin: 4px 4px 4px 4px;
     float:right;
-    margin-right: ;
 }
 
 .custom-btn:hover{
@@ -131,7 +130,7 @@ section#results{
     margin: 0;
     width: 50%;
     padding: 20px 20px 20px 20px;
-   
+
 }
 
 .risk-level-div{
@@ -143,7 +142,7 @@ section#results{
     margin: 0;
     width: 50%;
     padding: 20px 20px 20px 20px;
-   
+
 }
 
 .risk-level-div :nth-child(3){
@@ -313,12 +312,12 @@ section#results{
 .completed div p{
     margin-bottom: 0;
     padding-left: 12px;
-    
+
 }
 
 .initiated{
     padding-top: 10px;
-    
+
     color:var(--secondary-text);
 }
 
@@ -355,7 +354,7 @@ section#results{
     background-color: red;
     height:24px;
     width: 180px;
-    
+
 }
 
 .initiatedProgress{
@@ -385,7 +384,7 @@ footer h4{
 }
 
 footer div a{
-    color:var(--accent-color); 
+    color:var(--accent-color);
     background-color: var(--primary-text);
     height: 28px;
     border-radius: 6px;
@@ -393,14 +392,14 @@ footer div a{
 }
 
 footer div a:hover{
-    color:var(--accent-color); 
+    color:var(--accent-color);
     background-color: var(--secondary-text);
 }
 
 footer div a i{
     font-size: 22px;
     padding:3px;
-   
+
 }
 
 footer div :nth-child(4){
@@ -438,9 +437,9 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         margin: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
-       
+
     }
-    
+
     .risk-level-div{
         max-width: 100%;
         min-width: 300px;
@@ -448,9 +447,9 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         margin: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
-       
+
     }
-    
+
     .vaccine-stats-div{
         max-width: 100%;
         min-width: 300px;
@@ -460,7 +459,7 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         padding: 20px 20px 20px 20px;
         border-radius: 0;
     }
-    
+
     .icu-stats-div{
         max-width: 100%;
         min-width: 100%;
@@ -514,20 +513,20 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         display: flex;
         padding-right: 0px;
         flex-direction: column;
-       
+
     }
     .card-header-div{
         display:flex;
         flex-direction: column;
         text-align: center;
     }
-    
+
     .state-name-card-header{
         color: var(--primary-text);
         width:100%;
         padding:10px;
     }
-    
+
     .pop-card-header{
         color: var(--secondary-text);
         width:100%;
@@ -537,7 +536,7 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
     .general-stats-div{
         text-align: center;
     }
-    
+
     .daily-stats p{
         text-align: center;
         width:100%;
@@ -559,7 +558,7 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
     .icu-stats-div{
         text-align: center;
     }
-    
+
     .initiatedBar{
         margin-left: 25px;
     }
@@ -568,5 +567,3 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         margin-left: 25px;
     }
 }
-
-

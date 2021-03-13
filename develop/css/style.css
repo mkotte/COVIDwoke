@@ -1,9 +1,10 @@
 :root{
-    --light: #FDF5EA;
-    --beige: #E6C9AB;
-    --red:#912A23;
-    --dark: #1D2F47;
-    --mint: #7FD2A6;
+    --accent-color: #2CBDF6;
+    --primary-txt: #FFFFFF;
+    --secondary-txt: #B3B3B3;
+    --background:#282828;
+    --darker: #181818;
+    --darkest: #121212;
 }
 
 *{
@@ -14,33 +15,43 @@
 }
 
 body{
-    background: var(--dark);
+    background: var(--darker);
     display: flex;
     flex-direction: column;
-    flex-shrink: 3;
+    /* flex-shrink: 3; */
     height: 100%;
 }
 
 header{
-    background: var(--light);
+    background: var(--background);
 }
 
 header div.header_wrapper{
-    height: 125px;
-    padding: 25px 15px 0 15px;
-    border-top: 15px solid var(--beige);
+    height: 140px;
+    padding: 15px 15px 0 15px;
+    border-top: 15px solid var(--background);
+}
+
+#covid-vector{
+    height: 100px;
+    width:100px;
+    position: relative;
+    bottom: 7px;
 }
 
 #big_header_text{
-    color: var(--beige);
+    color: var(--accent-color);
     font-size: 50px;
     font-weight: 500;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
-#sm_header_text{
-    color: var(--beige);
-    font-size: 16px;
+#woke-header-txt{
+    color: var(--accent-color);
+    position: relative;
+    top: 30px;
+    right: 70px;
+    font-size: 40px;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
@@ -50,7 +61,7 @@ main{
 }
 
 div.mission_wrapper{
-    background: var(--light);
+    background: var(--darker);
     border-top: 1px solid #912a2349;
     display: flex;
     flex-wrap: wrap;
@@ -71,7 +82,7 @@ div.mission_wrapper{
 }
 
 .mission_header{
-    color: var(--dark);
+    color: var(--primary-txt);
     font-size: 28px;
     text-transform: uppercase;
     margin: 0;
@@ -87,18 +98,18 @@ div.mission_wrapper{
 }
 
 .mission_text{
-    color: var(--red);
+    color: var(--secondary-txt);
     font-size: 14px;
 }
 
 .search_bar_wrapper{
-    background: var(--dark);
-    border: 5px solid var(--dark);
+    background: #00000095;
+    border: 5px solid transparent;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     height: auto;
-    padding: 10px 20px 10px 0;
+    padding: 2px 20px 2px 0;
     width: 100%;
     margin: 0;
 }
@@ -143,19 +154,19 @@ input[type=text] {
     font-size: 18px;
 } */
 
+/* submit button */
 .custom-btn{
-    background: #2d4e79;
+    background: #089dd8;
     border: 0.5px solid #d6d6d6cc;
-    color: var(--light);
+    color: var(--primary-txt);
     font-size: 18px;
-    margin: 10px 4px 4px 4px;
-    float:right;
+    margin: 2px 2px 2px 2px;
 }
 
 .custom-btn:hover{
-    background: #223c5e;
+    background: var(--accent-color);
     border-color: #faf9f7e0;
-    color: var(--mint);
+    color: var(--primary-txt);
 }
 
 .dropdown-menu{
@@ -163,16 +174,17 @@ input[type=text] {
     overflow-y: auto;
 }
 
+/* search button */
 .btn-primary{
-    background: #2d4e79;
+    background: #089dd8;
     border: 0.5px solid #d6d6d6cc;
-    color: var(--light);
+    color: var(--primary-txt);
 }
 
 .btn-primary:hover{
-    background: #223c5e;
+    background: var(--accent-color);
     border-color: #faf9f7e0;
-    color: var(--mint);
+    color: var(--primary-txt);
 }
 
 /* .dropdown-item{
@@ -181,8 +193,7 @@ input[type=text] {
 } */
 
 .travel_advisory_container{
-    background: var(--light);
-    border-top: 5px solid #222421;
+    background: var(--darker);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,12 +201,15 @@ input[type=text] {
 }
 
 .alert-danger{
-    padding: 10px;
+    padding: 4px;
     margin: 10px;
+    background: #898b8b;
+    border: 1px solid #d6d6d6cc;
+    color: #810103;
 }
 
 .travel_advisory_text{
-    color: #5B100B;
+    color: #bb0003;
     font-size: 20px;
     font-weight: 400;
     padding: 15px 30px;
@@ -229,7 +243,7 @@ input[type=text] {
     display: flex;
     /* flex-wrap: nowrap; */
     font-size: 35px;
-    color: var(--mint);
+    color: var(--accent-color);
     margin: 0;
     height: 50px;
     line-height: 1;
@@ -276,7 +290,7 @@ footer h4{
 }
 
 footer div a{
-    color:var(--accent-color); 
+    color:var(--accent-color);
     background-color: var(--primary-text);
     height: 28px;
     border-radius: 6px;
@@ -284,14 +298,14 @@ footer div a{
 }
 
 footer div a:hover{
-    color:var(--accent-color); 
+    color:var(--accent-color);
     background-color: var(--secondary-text);
 }
 
 footer div a i{
     font-size: 22px;
     padding:3px;
-   
+
 }
 
 footer div :nth-child(4){

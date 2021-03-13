@@ -10,7 +10,7 @@ let countiesSavedInfo = {
 	states: [],
 	counties: []
 };
-		
+
 function determineDataPath(){
 	if (localStorage.getItem('countyItem-' + 0) && true){
 		grabCountyInputs();
@@ -28,9 +28,9 @@ function grabCountyInputs() {
 			countiesSavedInfo.counties.push(localStorage.getItem('countyItem-' + i))
 			console.log(localStorage.getItem('countyItem-' + i))
 		}
-		
+
 	}
-	for (let i = 0; i < 2; i++){	
+	for (let i = 0; i < 2; i++){
 		grabCountyData( countiesSavedInfo.states[i], countiesSavedInfo.counties[i]);
 }};
 function grabStateInputs() {
@@ -73,12 +73,12 @@ function grabCountyData(stateTarget , countyTarget) {
 
 
 		//ICU beds
-		let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity;	
-		let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid;		
-		let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal;		
+		let countyICUCapacity = dataObj[0].actuals.icuBeds.capacity;
+		let countyICUCovidUsage = dataObj[0].actuals.icuBeds.currentUsageCovid;
+		let countyICUTotalUsage = dataObj[0].actuals.icuBeds.currentUsageTotal;
 		let countyAvailableBeds = countyICUCapacity - countyICUTotalUsage;
 		let countyNonCovidBeds = countyICUTotalUsage - countyICUCovidUsage;
-		
+
 		//riskLevel
 		let countyRiskLevel = dataObj[0].riskLevels.overall
 		console.log('County Risk Level ' + countyRiskLevel)
@@ -130,7 +130,7 @@ function grabCountyData(stateTarget , countyTarget) {
 		let generalStatsTitle = document.createElement('h3');
 		generalStatsTitle.setAttribute('class', 'gen-stats-header');
 		generalStatsTitle.setAttribute('id', '');
-		generalStatsTitle.textContent = "General Stats";	
+		generalStatsTitle.textContent = "General Stats";
 		generalStatsDiv.appendChild(generalStatsTitle);
 
 		// daily stats container + info
@@ -179,12 +179,12 @@ function grabCountyData(stateTarget , countyTarget) {
 		//TODO: use CSS to style!
 		for (let i = 5; i > 0; i--) {
 			let riskDisplay = document.createElement('div');
-			riskDisplay.setAttribute("class", "riskLevel-" + i );
+			riskDisplay.setAttribute("class", "riskLevel-" + i);
 			riskDisplay.setAttribute("id", "level-" + i + "-" + countyTarget);
 			riskDisplayWrapper.appendChild(riskDisplay);
 		};
 
-		// risk level describing text 
+		// risk level describing text
 		let riskLevelDescEl = document.createElement('h3');
 		riskLevelDiv.appendChild(riskLevelDescEl);
 		let riskLevelTxtEl = document.createElement('p');
@@ -194,35 +194,35 @@ function grabCountyData(stateTarget , countyTarget) {
 		if (countyRiskLevel == 5) {
 			riskLevelDescEl.textContent = "Severe outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is currently experiencing a severe outbreak. Take all possible precautions to avoid exposure."
-			let riskDisplaySelected = document.getElementById('level-5'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-5' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-5');
 		}
 		else if (countyRiskLevel == 4) {
 			riskLevelDescEl.textContent = "Active outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is either actively experiencing an outbreak or is at extreme risk. COVID cases are exponentially growing and/or " + countyTarget + " COVID preparedness is significantly below international standards."
-			let riskDisplaySelected = document.getElementById('level-4'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-4' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-4');
 		}
 		else if (countyRiskLevel == 3) {
 			riskLevelDescEl.textContent = "At risk of outbreak";
 			riskLevelTxtEl.textContent = countyTarget + " is at risk of an outbreak. COVID cases are either increasing at a rate likely to overwhelm hospitals and/or the state’s COVID preparedness is below international standards."
-			let riskDisplaySelected = document.getElementById('level-3'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-3' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-3');
 		}
 		else if (countyRiskLevel == 2) {
 			riskLevelDescEl.textContent = "Slow disease growth";
 			riskLevelTxtEl.textContent = "Covid in " + countyTarget + " is spreading in a slow and controlled fashion, and " + countyTarget + " COVID preparedness meets international standards."
-			let riskDisplaySelected = document.getElementById('level-2'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-2' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-2');
 		}
 		else {
 			riskLevelDescEl.textContent = "On track for containment";
 			riskLevelTxtEl.textContent = countyTarget + " is on track to contain COVID. Cases are steadily decreasing and " + countyTarget + " COVID preparedness meets or exceeds international standards."
-			let riskDisplaySelected = document.getElementById('level-1'+ "-" + countyTarget);
+			let riskDisplaySelected = document.getElementById('level-1' + "-" + countyTarget);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
 
-		// vaccination section 
+		// vaccination section
 		let vaccinationTitle = document.createElement('h3');
 		vaccinationTitle.textContent = "Vaccinations";
 		vaccineStatsDiv.appendChild(vaccinationTitle);
@@ -341,7 +341,7 @@ function grabStateData(target) {
 
 		// riskLevel
 		let riskLevel = dataObj.riskLevels.overall
-	
+
 	//DOM Manipulation Here
 		// creating +appending information sections to cards
 		let stateCardEL = document.createElement('div');
@@ -385,14 +385,14 @@ function grabStateData(target) {
 		populationEl.setAttribute('id', '');
 		populationEl.textContent = "Population: " + population;
 		cardHeader.appendChild(populationEl);
-		
+
 		// general stats card section
 		let generalStatsTitle = document.createElement('h3');
 		generalStatsTitle.setAttribute('class', 'gen-stats-header');
 		generalStatsTitle.setAttribute('id', '');
 		generalStatsTitle.textContent = "General Stats";
 		generalStatsDiv.appendChild(generalStatsTitle);
-	
+
 		// daily stats container + info
 		let dailyStatsDiv = document.createElement('div');
 		dailyStatsDiv.setAttribute('class', "daily-stats");
@@ -406,7 +406,7 @@ function grabStateData(target) {
 		let newDeathsEl = document.createElement('p')
 		newDeathsEl.textContent = "New Deaths: " + dailyDeaths;
 		dailyStatsDiv.appendChild(newDeathsEl);
-		
+
 		// total stats container + info
 		let totalStatsDiv = document.createElement('div');
 		totalStatsDiv.setAttribute('class', "total-stats");
@@ -417,7 +417,7 @@ function grabStateData(target) {
 		let totalDeathsEl = document.createElement('p');
 		totalDeathsEl.textContent = "Total Deaths: " + totalDeaths;
 		totalStatsDiv.appendChild(totalDeathsEl);
-		
+
 		// infection rate container and statistics
 		let infectionRateDiv = document.createElement('div');
 		infectionRateDiv.setAttribute('class', "total-stats");
@@ -425,7 +425,7 @@ function grabStateData(target) {
 		let infectionRateEl = document.createElement('p');
 		infectionRateEl.textContent = "Infection Rate: " + infectionRate;
 		infectionRateDiv.appendChild(infectionRateEl);
-		
+
 		// risk level Section
 		let riskLevelTitle = document.createElement('h3');
 		riskLevelTitle.textContent = "Risk Level";
@@ -434,7 +434,7 @@ function grabStateData(target) {
 		riskDisplayWrapper.setAttribute('id', "risk-wrapper");
 		riskDisplayWrapper.style.display ='flex';
 		riskLevelDiv.appendChild(riskDisplayWrapper);
-		
+
 		// for loop creating + appending the risk levels display's divs
 		for (let i = 5; i > 0; i--) {
 			let riskDisplay = document.createElement('div');
@@ -442,35 +442,35 @@ function grabStateData(target) {
 			riskDisplay.setAttribute("id", "level-" + i + '-' + target);
 			riskDisplayWrapper.appendChild(riskDisplay);
 		};
-		// risk level describing text 
+		// risk level describing text
 		let riskLevelDescEl = document.createElement('h3');
 		riskLevelDiv.appendChild(riskLevelDescEl);
 		let riskLevelTxtEl = document.createElement('p');
 		riskLevelDiv.appendChild(riskLevelTxtEl);
-		
+
 		// If statement to determine display bordering in css + text risk level text
 		if (riskLevel == 5) {
 			riskLevelDescEl.textContent = "Severe outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is currently experiencing a severe outbreak. Take all possible precautions to avoid exposure."
-			let riskDisplaySelected = document.getElementById('level-5'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-5' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-5');
 		}
 		else if (riskLevel == 4) {
 			riskLevelDescEl.textContent = "Active outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is either actively experiencing an outbreak or is at extreme risk. COVID cases are exponentially growing and/or " + stateNames[stateNum] + " COVID preparedness is significantly below international standards."
-			let riskDisplaySelected = document.getElementById('level-4'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-4' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-4');
 		}
 		else if (riskLevel == 3) {
 			riskLevelDescEl.textContent = "At risk of outbreak";
 			riskLevelTxtEl.textContent = stateNames[stateNum] + " is at risk of an outbreak. COVID cases are either increasing at a rate likely to overwhelm hospitals and/or the state’s COVID preparedness is below international standards."
-			let riskDisplaySelected = document.getElementById('level-3'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-3' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-3');
 		}
 		else if (riskLevel == 2) {
 			riskLevelDescEl.textContent = "Slow disease growth";
 			riskLevelTxtEl.textContent = "Covid in " + stateNames[stateNum] + " is spreading in a slow and controlled fashion, and " + stateNames[stateNum] + " COVID preparedness meets international standards."
-			let riskDisplaySelected = document.getElementById('level-2'+ '-' + target);
+			let riskDisplaySelected = document.getElementById('level-2' + '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-2');
 		}
 		else {
@@ -479,12 +479,12 @@ function grabStateData(target) {
 			let riskDisplaySelected = document.getElementById('level-1'+ '-' + target);
 			riskDisplaySelected.setAttribute('class', 'selected-level riskLevel-1');
 		};
-		
-		// vaccination section 
+
+		// vaccination section
 		let vaccinationTitle = document.createElement('h3');
 		vaccinationTitle.textContent = "Vaccinations";
 		vaccineStatsDiv.appendChild(vaccinationTitle);
-		
+
 		//  vaccination progress bars
 		let completedContainer = document.createElement('div');
 		completedContainer.setAttribute('class', 'completed');
@@ -522,7 +522,7 @@ function grabStateData(target) {
 		initiatedProgress.setAttribute('class', 'initiatedProgress')
 		initiatedProgress.style.width = vaccinesInitiatedNum;
 		initiatedProgressBar.appendChild(initiatedProgress);
-		
+
 		// icu section
 		let icuTitle = document.createElement('h3');
 		icuTitle.textContent = 'ICU Beds'
@@ -557,7 +557,7 @@ function grabStateData(target) {
 	})
 };
 
-function removeSavedStateInfo(){	
+function removeSavedStateInfo(){
 	console.log(2);
 	for (let i = 0; i < 2; i++){
 		localStorage.removeItem('stateItem-' + i);
@@ -583,4 +583,4 @@ returnButton.addEventListener('click', function(event){
 // removeSavedCountyInfo()
 determineDataPath();
 // grabCountyInputs();
-// grabStateInputs(); 
+// grabStateInputs();
