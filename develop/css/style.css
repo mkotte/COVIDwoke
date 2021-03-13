@@ -149,6 +149,7 @@ input[type=text] {
     color: var(--light);
     font-size: 18px;
     margin: 10px 4px 4px 4px;
+    float:right;
 }
 
 .custom-btn:hover{
@@ -255,35 +256,50 @@ input[type=text] {
 }
 
 /* footer styling below*/
-footer{
+footer div{
+    display: flex;
+    flex-direction: row;
+}
 
-}
-footer h4{
-
-}
-.creators{
-    display:flex;
-    justify-content: center;
-}
-.creators a{
-    display: inline-block;
-    width:30px;
-    height:30px;
-    background: #222421;
+footer div h4{
+    color:var(--secondary-text);
     margin:5px;
-    border-radius: 30%;
-    box-shadow: 0 4px 10px -4px #a4b5ff59;
-    color:var(--dark);
-    justify-content: center;
-    align-items: center;
-    text-align:center;
 
 }
 
-.symbols{
+footer h4{
+    margin:5px;
+}
 
-   font-size:20px;
+.creators{
+    justify-content: center;
+}
 
+footer div a{
+    color:var(--accent-color);
+    background-color: var(--primary-text);
+    height: 28px;
+    border-radius: 6px;
+    margin:5px;
+}
+
+footer div a:hover{
+    color:var(--accent-color);
+    background-color: var(--secondary-text);
+}
+
+footer div a i{
+    font-size: 22px;
+    padding:3px;
+
+}
+
+footer div :nth-child(4){
+    margin-left:25px;
+}
+
+footer div :nth-child(3){
+    margin-right:25px;
 }
 
 
