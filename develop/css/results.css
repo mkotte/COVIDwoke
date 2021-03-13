@@ -17,12 +17,12 @@
 }
 
 body{
-    background: var(--accent-color);
+    background: var(--darkest);
     height: 100%;
 }
 
 header{
-    background: var(--darkest);
+    background: var(--background);
 }
 
 header div.header_wrapper{
@@ -187,10 +187,14 @@ section#results{
 
 .state-name-card-header{
     color: var(--primary-text);
+    width:50%;
+    padding:10px;
 }
 
 .pop-card-header{
     color: var(--secondary-text);
+    width:50%;
+    padding: 10px 20px;
 }
 
 .gen-stats-header{
@@ -472,6 +476,18 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         flex-direction: column;
         text-align: center;
     }
+    
+    .state-name-card-header{
+        color: var(--primary-text);
+        width:100%;
+        padding:10px;
+    }
+    
+    .pop-card-header{
+        color: var(--secondary-text);
+        width:100%;
+        padding: 10px 20px;
+    }
 
     .general-stats-div{
         text-align: center;
@@ -505,14 +521,6 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
 
     .completedBar{
         margin-left: 25px;
-    }
-
-    .initiatedProgress{
-        padding-left: 25px;
-    }
-
-    .completedProgress{
-        padding-left: 25px;
     }
 }
 
