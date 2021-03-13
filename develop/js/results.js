@@ -559,13 +559,13 @@ function grabStateData(target) {
 
 function removeSavedStateInfo(){
 	console.log(2);
-	for (let i = 0; i < 4; i++){
+	for (let i = 0; i < 2; i++){
 		localStorage.removeItem('stateItem-' + i);
 	}
 };
 
 function removeSavedCountyInfo(){
-	for (let i = 0; i < 8; i++){
+	for (let i = 0; i < 4; i++){
 	localStorage.removeItem('countyItem-' + i)
 	}
 };
