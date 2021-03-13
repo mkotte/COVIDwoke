@@ -14,7 +14,7 @@
 }
 
 body{
-    background: var(--light);
+    background: var(--dark;);
     height: 100%;
 }
 
@@ -40,6 +40,11 @@ header div.header_wrapper{
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
+.results{
+    padding:80 px 0 100px 0;
+    height: 100%;
+}
+
 main{
     height: 100%;
     width: 100%;
@@ -62,21 +67,22 @@ section#results{
 /*results js set attribute */
 .state-card-div{
     /* border: 0.2px solid #EDE5DC; */
-    background: var(--light);
-    max-width: 650px;
-    min-width: 340px;
+    /* background: var(--light); */
+    max-width: 48%;
+    min-width: 320px;
+    padding-right: 2%;
+    padding-left: 2%;
     /*align-items: space-evenly;
     justify-content: space-between; */
-    width: 50%;
-    transition: all 0.3s ease;
-    box-shadow: opx 4px 8px 0 rgba(0,0,0,0.2);
+    /* transition: all 0.3s ease;
+    box-shadow: opx 4px 8px 0 rgba(0,0,0,0.2); */
 }
 
 .card-header-div{
     border: 0.1px solid #EDE5DC;
     display: flex;
     justify-content: space-evenly;
-    max-width: 640px;
+    /* max-width: 640px; */
     padding: 10px;
     width: 100%;
     border-radius: 7px;
@@ -86,12 +92,13 @@ section#results{
 .stats-wrapper{
     display: flex;
     flex-wrap: wrap;
+    width:100%;
 }
 
 .general-stats-div{
     background: var(--dark);
     border: 0.1px solid #EDE5DC;
-    max-width: 320px;
+    max-width: 50%;
     min-width: 300px;
     min-height: 320px;
     margin: 0;
@@ -103,7 +110,7 @@ section#results{
 .risk-level-div{
     background: var(--dark);
     border: 0.1px solid #EDE5DC;
-    max-width: 320px;
+    max-width: 50%;
     min-width: 300px;
     min-height: 320px;
     margin: 0;
@@ -112,12 +119,17 @@ section#results{
     border-radius: 7px;
 }
 
+.risk-level-div h3{
+    padding-top:20px;
+}
+
 .vaccine-stats-div{
     background: var(--dark);
     border: 0.1px solid #EDE5DC;
-    max-width: 320px;
+    max-width: 50%;
     min-width: 300px;
     min-height: 320px;
+    width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
@@ -126,9 +138,10 @@ section#results{
 .icu-stats-div{
     background: var(--dark);
     border: 0.1px solid #EDE5DC;
-    max-width: 320px;
-    min-width: 300px;
+    max-width: 50%;
+    min-width: 50%;
     min-height: 320px;
+    width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
     border-radius: 7px;
@@ -203,7 +216,7 @@ section#results{
     background-color: red;
     width:24px;
     height:30px;
-    margin: 3.5px;
+    margin-top: 2px;
     border-radius: 40% 40% 0 0;
     transform: rotate(-90deg);
 }
@@ -212,7 +225,7 @@ section#results{
     background-color:orange;
     width:24px;
     height:30px;
-    margin: 3.5px;
+    margin-top: 2px;
     transform: rotate(-90deg);
 }
 
@@ -220,7 +233,7 @@ section#results{
     background-color:yellow;
     width:24px;
     height:30px;
-    margin: 3.5px;
+    margin-top:2px;
     transform: rotate(-90deg);
 }
 
@@ -228,7 +241,7 @@ section#results{
     background-color: greenyellow;
     width:24px;
     height:30px;
-    margin: 3.5px;
+    margin-top: 2px;
     transform: rotate(-90deg);
 }
 
@@ -236,16 +249,16 @@ section#results{
     background-color:green;
     width:24px;
     height:30px;
-    margin: 3.5px;
+    margin-top: 2px;
     border-radius: 0 0 40% 40%;
     transform: rotate(-90deg);
 }
 
 .selected-level{
-    width:28px;
-    height:34px;
+    width:26px;
+    height:30px;
     border: 3px solid black;
-    margin: 3px 4px 3px 4px;
+    padding: 3px 0 3px 0;
     z-index: 10;
 }
 
@@ -269,6 +282,16 @@ section#results{
 
 /* vaccine progress bars here */
 
+.completed div{
+    display:flex;
+    flex-direction: row;
+}
+.completed div p{
+    margin-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .completedBar{
     border-radius: 40px;
     background-color: red;
@@ -280,21 +303,172 @@ section#results{
     border-radius: 40px 0 0 40px;
     background-color: green;
     height:20px;
-
+    margin: 0;
 }
 
+
+.initiated div{
+      display:flex;
+      flex-direction: row;
+}
+
+.initiated div p{
+    margin-bottom: 0;
+    padding-right: 20px;
+}
 
 .initiatedBar{
     border-radius: 40px;
     background-color: red;
     height:20px;
     width: 150px;
+    justify-content: start;
 }
 
 .initiatedProgress{
     border-radius: 40px 0 0 40px;
     background-color: green;
     height:20px;
+    margin: 0;
 }
 
-@media screen and (max-width: 640){}
+/* Media breakpoint #1 @ 1420, look to remove padding between cards first.
+Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 0 20px;)
+*/
+
+@media screen and (max-width: 1400px) {
+    .state-card-div{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+
+    .general-stats-div{
+        background: var(--dark);
+        border: 0.1px solid #EDE5DC;
+        max-width: 100%;
+        min-width: 300px;
+        height:200px;
+        margin: 0;
+        width: 100%;
+        padding: 20px 20px 20px 20px;
+        border-radius: 7px;
+    }
+    
+    .risk-level-div{
+        background: var(--dark);
+        border: 0.1px solid #EDE5DC;
+        max-width: 100%;
+        min-width: 300px;
+        min-height: 320px;
+        margin: 0;
+        width: 100%;
+        padding: 20px 20px 20px 20px;
+        border-radius: 7px;
+    }
+    
+    .vaccine-stats-div{
+        background: var(--dark);
+        border: 0.1px solid #EDE5DC;
+        max-width: 100%;
+        min-width: 300px;
+        min-height: 320px;
+        width: 100%;
+        margin: 0;
+        padding: 20px 20px 20px 20px;
+        border-radius: 7px;
+    }
+    
+    .icu-stats-div{
+        background: var(--dark);
+        border: 0.1px solid #EDE5DC;
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 320px;
+        width: 100%;
+        margin: 0;
+        padding: 20px 20px 20px 20px;
+        border-radius: 7px;
+    }
+
+    .daily-stats{
+        display: flex;
+        padding-right: 12px;
+        flex-direction: row;
+    }
+
+    .daily-stats p{
+        width: 50%;
+    }
+
+    .total-stats{
+        display: flex;
+        padding-right: 12px;
+        flex-direction: row;
+    }
+
+    .total-stats p{
+        width: 50%;
+    }
+
+
+
+
+
+}
+
+@media screen and (max-width: 1100px) {
+    .state-card-div{
+        padding-left: .5%;
+        padding-right: .5%;
+    }
+
+    .daily-stats{
+        display: flex;
+        padding-right: 0;
+        flex-direction: column;
+    }
+
+    .total-stats{
+        display: flex;
+        padding-right: 0px;
+        flex-direction: column;
+       
+    }
+    .card-header-div{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .general-stats-div{
+        text-align: center;
+    }
+    
+    .daily-stats p{
+        text-align: center;
+        width:100%;
+    }
+
+    .total-stats p{
+        text-align: center;
+        width:100%;
+    }
+
+    .risk-level-div{
+        text-align: center;
+    }
+
+    .vaccine-stats-div{
+        text-align: center;
+    }
+    
+    .completedBar{ 
+        margin:auto;
+    }
+
+    .initiatedBar{
+        margin:auto;
+    }
+
+
+}
