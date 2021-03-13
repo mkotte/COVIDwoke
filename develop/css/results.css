@@ -165,6 +165,10 @@ section#results{
     padding-top:20px;
 }
 
+.risk-level-div h3{
+    padding-top:20px;
+}
+
 .vaccine-stats-div{
     background: var(--background);
     border: 1px solid var(--darker);

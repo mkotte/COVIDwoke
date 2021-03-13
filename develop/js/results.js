@@ -14,7 +14,7 @@ let countiesSavedInfo = {
 function determineDataPath(){
 	if (localStorage.getItem('countyItem-' + 0) && true){
 		grabCountyInputs();
-	}else if (localStorage.getItem('stateItem-' + 0) && true){
+	} else if (localStorage.getItem('stateItem-' + 0) && true) {
 		grabStateInputs();
 	}
 };
@@ -432,7 +432,7 @@ function grabStateData(target) {
 		riskLevelDiv.appendChild(riskLevelTitle);
 		let riskDisplayWrapper = document.createElement('div');
 		riskDisplayWrapper.setAttribute('id', "risk-wrapper");
-		riskDisplayWrapper.style.display ='flex';
+		riskDisplayWrapper.style.display = 'flex';
 		riskLevelDiv.appendChild(riskDisplayWrapper);
 
 		// for loop creating + appending the risk levels display's divs
