@@ -363,7 +363,52 @@ section#results{
     background-color: green;
     height:24x;
     margin: 0;
-    
+}
+
+footer div{
+    display: flex;
+    flex-direction: row;
+}
+
+footer div h4{
+    color:var(--secondary-text);
+    margin:5px;
+
+}
+
+footer h4{
+    margin:5px;
+}
+
+.creators{
+    justify-content: center;
+}
+
+footer div a{
+    color:var(--accent-color); 
+    background-color: var(--primary-text);
+    height: 28px;
+    border-radius: 6px;
+    margin:5px;
+}
+
+footer div a:hover{
+    color:var(--accent-color); 
+    background-color: var(--secondary-text);
+}
+
+footer div a i{
+    font-size: 22px;
+    padding:3px;
+   
+}
+
+footer div :nth-child(4){
+    margin-left:25px;
+}
+
+footer div :nth-child(3){
+    margin-right:25px;
 }
 
 /* Media breakpoint #1 @ 1420, look to remove padding between cards first.
@@ -525,7 +570,3 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
 }
 
 
-@media screen and (max-width: 700px){
-
-
-}
