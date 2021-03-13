@@ -149,6 +149,7 @@ input[type=text] {
     color: var(--light);
     font-size: 18px;
     margin: 10px 4px 4px 4px;
+    float:right;
 }
 
 .custom-btn:hover{

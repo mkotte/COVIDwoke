@@ -1,9 +1,12 @@
 :root{
-    --light: #FDF5EA;
-    --beige: #E6C9AB;
-    --red:#912A23;
-    --dark: #1D2F47;
-    --mint: #7FD2A6;
+    --secondary-accent: #F80005;
+    --accent-color: #2CBDF6;
+    --primary-text: #FFFFFF;
+    --secondary-text: #B3B3B3;
+    --background:#282828;
+    --darker: #181818;
+    --darkest: #121212;
+    --greyest: #343a40;
 }
 
 *{
@@ -14,30 +17,51 @@
 }
 
 body{
-    background: var(--dark;);
+    background: var(--darkest);
     height: 100%;
 }
 
 header{
-    background: var(--light);
+    background: var(--background);
 }
 
 header div.header_wrapper{
     height: 125px;
     padding: 25px 15px 0 15px;
-    border-top: 15px solid var(--beige);
+    border-top: 15px solid var(--primary-text);
 }
 
 #big_header_text{
-    color: var(--beige);
-    font-size: 50px;
+    color: var(--primary-text);
+    font-size: 44px;
     font-weight: 500;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 #sm_header_text{
-    color: var(--beige);
+    color: var(--primary-text);
     font-size: 16px;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
+}
+
+.return_button_wrapper{
+    float:right;
+    padding-right: 4%;
+}
+
+.custom-btn{
+    background: #2d4e79;
+    border: 0.5px solid #d6d6d6cc;
+    color: var(--primary-text);
+    font-size: 18px;
+    margin: 4px 4px 4px 4px;
+    float:right;
+    margin-right: ;
+}
+
+.custom-btn:hover{
+    background: #223c5e;
+    border-color: #faf9f7e0;
+    color: var(--secondary-text);
 }
 
 .results{
@@ -64,7 +88,8 @@ section#results{
     padding: 0;
 }
 
-/*results js set attribute */
+/*results.js set attribute */
+
 .state-card-div{
     /* border: 0.2px solid #EDE5DC; */
     /* background: var(--light); */
@@ -72,6 +97,8 @@ section#results{
     min-width: 320px;
     padding-right: 2%;
     padding-left: 2%;
+    padding-bottom: 100px;
+    margin-top:20px;
     /*align-items: space-evenly;
     justify-content: space-between; */
     /* transition: all 0.3s ease;
@@ -79,14 +106,14 @@ section#results{
 }
 
 .card-header-div{
-    border: 0.1px solid #EDE5DC;
+    border: 1px solid var(--darker);
     display: flex;
     justify-content: space-evenly;
     /* max-width: 640px; */
     padding: 10px;
     width: 100%;
-    border-radius: 7px;
-    background: var(--beige);
+    border-radius: 7px 7px 0 0;
+    background: var(--darker);
 }
 
 .stats-wrapper{
@@ -96,113 +123,121 @@ section#results{
 }
 
 .general-stats-div{
-    background: var(--dark);
-    border: 0.1px solid #EDE5DC;
+    background: var(--background);
+    border: 1px solid var(--darker);
     max-width: 50%;
     min-width: 300px;
     min-height: 320px;
     margin: 0;
     width: 50%;
     padding: 20px 20px 20px 20px;
-    border-radius: 7px;
+   
 }
 
 .risk-level-div{
-    background: var(--dark);
-    border: 0.1px solid #EDE5DC;
+    background: var(--background);
+    border: 1px solid var(--darker);
     max-width: 50%;
     min-width: 300px;
     min-height: 320px;
     margin: 0;
     width: 50%;
     padding: 20px 20px 20px 20px;
-    border-radius: 7px;
+   
 }
 
-.risk-level-div h3{
+.risk-level-div :nth-child(3){
     padding-top:20px;
 }
 
 .vaccine-stats-div{
-    background: var(--dark);
-    border: 0.1px solid #EDE5DC;
+    background: var(--background);
+    border: 1px solid var(--darker);
     max-width: 50%;
     min-width: 300px;
     min-height: 320px;
     width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
-    border-radius: 7px;
+    border-radius: 0 0 0 7px;
 }
 
-.icu-stats-div{
-    background: var(--dark);
-    border: 0.1px solid #EDE5DC;
+.vaccine-stats-div h3{
+    color:var(--primary-text);
+}
+
+.icu-stats-div {
+    background: var(--background);
+    border: 1px solid var(--darker);
     max-width: 50%;
     min-width: 50%;
     min-height: 320px;
     width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
-    border-radius: 7px;
+    border-radius: 0 0 7px 0;
+}
+.icu-stats-div h3{
+    color:var(--primary-text);
+}
+
+.icu-stats-div canvas{
+    max-height: 255px;
 }
 
 .state-name-card-header{
-    color: var(--red);
+    color: var(--primary-text);
+    width:50%;
+    padding:10px;
 }
 
 .pop-card-header{
-    color: var(--dark);
+    color: var(--secondary-text);
+    width:50%;
+    padding: 10px 20px;
 }
 
 .gen-stats-header{
-    color: var(--beige);
+    color: var(--primary-text);
 }
 
-.daily-stats-div{
-    color: var(--mint);
+.daily-stats{
+    color: var(--secondary-text);
 }
 
 .new-cases-txt{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 .new-deaths-txt{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 .total-stats{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 .total-cases-txt{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 .total-deaths-txt{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 .infection-rate-txt{
-    color: var(--mint);
+    color: var(--secondary-text);
 }
 
 /* risk level displays div's styled here */
-.risk-level-header{
-    color: var(--beige);
+.risk-level-div h3{
+    color: var(--primary-text);
 }
 
-.risk-level-header2{
-    color: var(--mint);
+.risk-level-div p{
+    color: var(--secondary-text);
 }
 
-.risk-level-desc-header{
-    color: var(--mint);
-}
-
-.risk-level-txt{
-    color: var(--mint);
-}
 
 #risk-wrapper{
     display: flex;
@@ -214,8 +249,8 @@ section#results{
 
 .riskLevel-5{
     background-color: red;
-    width:24px;
-    height:30px;
+    width:28px;
+    height:35px;
     margin-top: 2px;
     border-radius: 40% 40% 0 0;
     transform: rotate(-90deg);
@@ -223,40 +258,40 @@ section#results{
 
 .riskLevel-4{
     background-color:orange;
-    width:24px;
-    height:30px;
+    width:28px;
+    height:35px;
     margin-top: 2px;
     transform: rotate(-90deg);
 }
 
 .riskLevel-3{
     background-color:yellow;
-    width:24px;
-    height:30px;
+    width:28px;
+    height:35px;
     margin-top:2px;
     transform: rotate(-90deg);
 }
 
 .riskLevel-2{
     background-color: greenyellow;
-    width:24px;
-    height:30px;
+    width:28px;
+    height:35px;
     margin-top: 2px;
     transform: rotate(-90deg);
 }
 
 .riskLevel-1{
     background-color:green;
-    width:24px;
-    height:30px;
+    width:28px;
+    height:35px;
     margin-top: 2px;
     border-radius: 0 0 40% 40%;
     transform: rotate(-90deg);
 }
 
 .selected-level{
-    width:26px;
-    height:30px;
+    width:30px;
+    height:35px;
     border: 3px solid black;
     padding: 3px 0 3px 0;
     z-index: 10;
@@ -264,77 +299,82 @@ section#results{
 
 /* VACCINATIONS STYLES */
 
-.vaccination-header{
-    color: var(--beige);
+
+.completed{
+    padding-top:12px;
+    color:var(--secondary-text);
 }
-
-/* .completed{
-
-} */
-
-.vaccinations-completed-txt{
-    color: var(--mint);
-}
-
-.completed-percentages-txt{
-    color: var(--mint);
-}
-
-/* vaccine progress bars here */
 
 .completed div{
     display:flex;
     flex-direction: row;
 }
+
 .completed div p{
     margin-bottom: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 12px;
+    
 }
 
+.initiated{
+    padding-top: 10px;
+    
+    color:var(--secondary-text);
+}
+
+.initiated div{
+      display:flex;
+      flex-direction: row;
+      justify-content: start;
+}
+
+.initiated div p{
+    margin-bottom: 0;
+    padding-left: 12px;
+    color: var(--secondary-text);
+}
+
+
+/* vaccine progress bars here */
 .completedBar{
     border-radius: 40px;
     background-color: red;
-    height:20px;
-    width: 150px;
+    height:24px;
+    width: 180px;
 }
 
 .completedProgress{
     border-radius: 40px 0 0 40px;
     background-color: green;
-    height:20px;
+    height:24px;
     margin: 0;
-}
-
-
-.initiated div{
-      display:flex;
-      flex-direction: row;
-}
-
-.initiated div p{
-    margin-bottom: 0;
-    padding-right: 20px;
 }
 
 .initiatedBar{
     border-radius: 40px;
     background-color: red;
-    height:20px;
-    width: 150px;
-    justify-content: start;
+    height:24px;
+    width: 180px;
+    
 }
 
 .initiatedProgress{
     border-radius: 40px 0 0 40px;
     background-color: green;
-    height:20px;
+    height:24x;
     margin: 0;
+    
 }
 
 /* Media breakpoint #1 @ 1420, look to remove padding between cards first.
 Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 0 20px;)
 */
+@media screen and (max-width: 1586px) {
+    .state-card-div{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+}
 
 @media screen and (max-width: 1400px) {
     .state-card-div{
@@ -342,52 +382,48 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         padding-right: 1%;
     }
 
+    .return_button_wrapper{
+        padding-right: 3%;
+    }
+
     .general-stats-div{
-        background: var(--dark);
-        border: 0.1px solid #EDE5DC;
         max-width: 100%;
         min-width: 300px;
         height:200px;
         margin: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
-        border-radius: 7px;
+       
     }
     
     .risk-level-div{
-        background: var(--dark);
-        border: 0.1px solid #EDE5DC;
         max-width: 100%;
         min-width: 300px;
         min-height: 320px;
         margin: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
-        border-radius: 7px;
+       
     }
     
     .vaccine-stats-div{
-        background: var(--dark);
-        border: 0.1px solid #EDE5DC;
         max-width: 100%;
         min-width: 300px;
         min-height: 320px;
         width: 100%;
         margin: 0;
         padding: 20px 20px 20px 20px;
-        border-radius: 7px;
+        border-radius: 0;
     }
     
     .icu-stats-div{
-        background: var(--dark);
-        border: 0.1px solid #EDE5DC;
         max-width: 100%;
         min-width: 100%;
         min-height: 320px;
         width: 100%;
         margin: 0;
         padding: 20px 20px 20px 20px;
-        border-radius: 7px;
+        border-radius: 0 0 7px 7px;
     }
 
     .daily-stats{
@@ -411,12 +447,13 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
     }
 
 
-
-
-
 }
 
 @media screen and (max-width: 1100px) {
+    .return_button_wrapper{
+        padding-right: 2.5%;
+    }
+
     .state-card-div{
         padding-left: .5%;
         padding-right: .5%;
@@ -439,6 +476,18 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
         flex-direction: column;
         text-align: center;
     }
+    
+    .state-name-card-header{
+        color: var(--primary-text);
+        width:100%;
+        padding:10px;
+    }
+    
+    .pop-card-header{
+        color: var(--secondary-text);
+        width:100%;
+        padding: 10px 20px;
+    }
 
     .general-stats-div{
         text-align: center;
@@ -461,14 +510,22 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
     .vaccine-stats-div{
         text-align: center;
     }
+
+    .icu-stats-div{
+        text-align: center;
+    }
     
-    .completedBar{ 
-        margin:auto;
+    .initiatedBar{
+        margin-left: 25px;
     }
 
-    .initiatedBar{
-        margin:auto;
+    .completedBar{
+        margin-left: 25px;
     }
+}
+
+
+@media screen and (max-width: 700px){
 
 
 }
