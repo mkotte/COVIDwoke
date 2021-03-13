@@ -1,8 +1,8 @@
 :root{
     --secondary-accent: #F80005;
     --accent-color: #2CBDF6;
-    --primary-text: #FFFFFF;
-    --secondary-text: #B3B3B3;
+    --primary-txt: #FFFFFF;
+    --secondary-txt: #B3B3B3;
     --background:#282828;
     --darker: #181818;
     --darkest: #121212;
@@ -26,20 +26,35 @@ header{
 }
 
 header div.header_wrapper{
-    height: 125px;
-    padding: 25px 15px 0 15px;
-    border-top: 15px solid var(--primary-text);
+    height: 200px;
+    padding: 15px 15px 0 30px;
+    border-top: 15px solid var(--background);
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#covid-vector{
+    height: 100px;
+    width:100px;
+    position: relative;
+    bottom: 7px;
 }
 
 #big_header_text{
-    color: var(--primary-text);
-    font-size: 44px;
+    color: var(--accent-color);
+    font-size: 65px;
     font-weight: 500;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
-#sm_header_text{
-    color: var(--primary-text);
-    font-size: 16px;
+
+#woke-header-txt{
+    color: var(--accent-color);
+    position: relative;
+    top: 30px;
+    right: 70px;
+    font-size: 50px;
+    padding-bottom: 10px;
     /* text-shadow: 3px 3px 5px rgba(72, 66, 75, 0.623); */
 }
 
@@ -49,22 +64,22 @@ header div.header_wrapper{
 }
 
 .custom-btn{
-    background: #2d4e79;
+    background: #089dd8;
     border: 0.5px solid #d6d6d6cc;
-    color: var(--primary-text);
+    color: var(--primary-txt);
     font-size: 18px;
     margin: 4px 4px 4px 4px;
     float:right;
 }
 
 .custom-btn:hover{
-    background: #223c5e;
+    background: var(--accent-color);
     border-color: #faf9f7e0;
-    color: var(--secondary-text);
+    color: var(--primary-txt);
 }
 
 .results{
-    padding:80 px 0 100px 0;
+    padding:80px 0 100px 0;
     height: 100%;
 }
 
@@ -90,13 +105,12 @@ section#results{
 /*results.js set attribute */
 
 .state-card-div{
-    /* border: 0.2px solid #EDE5DC; */
-    /* background: var(--light); */
+    /* box-shadow: 3px 3px 2px #2cbdf68c; */
     max-width: 48%;
     min-width: 320px;
     padding-right: 2%;
     padding-left: 2%;
-    padding-bottom: 100px;
+    margin-bottom: 100px;
     margin-top:20px;
     /*align-items: space-evenly;
     justify-content: space-between; */
@@ -106,6 +120,7 @@ section#results{
 
 .card-header-div{
     border: 1px solid var(--darker);
+    box-shadow: 3px 3px 4px 3px #2cbdf69c;
     display: flex;
     justify-content: space-evenly;
     /* max-width: 640px; */
@@ -116,6 +131,7 @@ section#results{
 }
 
 .stats-wrapper{
+    box-shadow: 3px 3px 4px 3px #2cbdf69c;
     display: flex;
     flex-wrap: wrap;
     width:100%;
@@ -158,11 +174,11 @@ section#results{
     width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
-    border-radius: 0 0 0 7px;
+    border-bottom-left-radius: 7px;
 }
 
 .vaccine-stats-div h3{
-    color:var(--primary-text);
+    color:var(--primary-txt);
 }
 
 .icu-stats-div {
@@ -174,10 +190,10 @@ section#results{
     width: 50%;
     margin: 0;
     padding: 20px 20px 20px 20px;
-    border-radius: 0 0 7px 0;
+    border-bottom-right-radius: 7px;
 }
 .icu-stats-div h3{
-    color:var(--primary-text);
+    color:var(--primary-txt);
 }
 
 .icu-stats-div canvas{
@@ -185,56 +201,56 @@ section#results{
 }
 
 .state-name-card-header{
-    color: var(--primary-text);
+    color: var(--primary-txt);
     width:50%;
     padding:10px;
 }
 
 .pop-card-header{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
     width:50%;
     padding: 10px 20px;
 }
 
 .gen-stats-header{
-    color: var(--primary-text);
+    color: var(--primary-txt);
 }
 
 .daily-stats{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .new-cases-txt{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .new-deaths-txt{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .total-stats{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .total-cases-txt{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .total-deaths-txt{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 .infection-rate-txt{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 /* risk level displays div's styled here */
 .risk-level-div h3{
-    color: var(--primary-text);
+    color: var(--primary-txt);
 }
 
 .risk-level-div p{
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 
@@ -301,7 +317,7 @@ section#results{
 
 .completed{
     padding-top:12px;
-    color:var(--secondary-text);
+    color:var(--secondary-txt);
 }
 
 .completed div{
@@ -318,7 +334,7 @@ section#results{
 .initiated{
     padding-top: 10px;
 
-    color:var(--secondary-text);
+    color:var(--secondary-txt);
 }
 
 .initiated div{
@@ -330,7 +346,7 @@ section#results{
 .initiated div p{
     margin-bottom: 0;
     padding-left: 12px;
-    color: var(--secondary-text);
+    color: var(--secondary-txt);
 }
 
 
@@ -370,7 +386,7 @@ footer div{
 }
 
 footer div h4{
-    color:var(--secondary-text);
+    color:var(--secondary-txt);
     margin:5px;
 
 }
@@ -385,7 +401,7 @@ footer h4{
 
 footer div a{
     color:var(--accent-color);
-    background-color: var(--primary-text);
+    background-color: var(--primary-txt);
     height: 28px;
     border-radius: 6px;
     margin:5px;
@@ -393,7 +409,7 @@ footer div a{
 
 footer div a:hover{
     color:var(--accent-color);
-    background-color: var(--secondary-text);
+    background-color: var(--secondary-txt);
 }
 
 footer div a i{
@@ -522,13 +538,13 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
     }
 
     .state-name-card-header{
-        color: var(--primary-text);
+        color: var(--primary-txt);
         width:100%;
         padding:10px;
     }
 
     .pop-card-header{
-        color: var(--secondary-text);
+        color: var(--secondary-txt);
         width:100%;
         padding: 10px 20px;
     }
@@ -565,5 +581,35 @@ Secondly padding inside individual cards i.e  for the icu card (padding: 20px 0 
 
     .completedBar{
         margin-left: 25px;
+    }
+}
+
+@media screen and (max-width:441px){
+    #big_header_text{
+        font-size: 55px;
+    }
+
+    #woke-header-txt{
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:389px){
+    #big_header_text{
+        font-size: 45px;
+    }
+
+    #woke-header-txt{
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width:354px){
+    #big_header_text{
+        font-size: 38px;
+    }
+
+    #woke-header-txt{
+        font-size: 30px;
     }
 }

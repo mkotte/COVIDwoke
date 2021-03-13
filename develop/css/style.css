@@ -22,7 +22,6 @@ body{
     background: var(--darker);
     display: flex;
     flex-direction: column;
-    /* flex-shrink: 3; */
     height: 100%;
     width: 100%;
 }
@@ -93,13 +92,14 @@ div.mission_wrapper{
     right: 75px; */
 }
 
-.mission_header{
+h1.mission_header{
     color: var(--primary-txt);
     font-size: 30px;
     text-transform: uppercase;
     margin: 0;
     padding: 0;
     width: fit-content;
+    text-shadow: 2px 2px 3px #2cbdf6cb;
 }
 
 .mission_text_wrapper{
@@ -179,7 +179,7 @@ div.search_bar_wrapper.row{
 }
 
 .alert-danger{
-    padding: 7px;
+    padding: 7px 15px 7px 20px;
     margin: 10px;
     background: #898b8b;
     border: 1px solid #d6d6d6cc;
@@ -391,9 +391,30 @@ footer div :nth-child(3){
         justify-content: center;
         height: 450px;
     }
+
+    footer h4{
+        font-size: 20px;
+    }
 }
 
-@media screen and (max-width:436px){
+@media screen and (max-width: 520px){
+    .creators{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .creator-m{
+        display: flex;
+        justify-content: center;
+    }
+
+    .creator-k{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:439px){
     #big_header_text{
         font-size: 55px;
     }
@@ -471,7 +492,7 @@ footer div :nth-child(3){
     }
 }
 
-@media screen and (max-width:320px){
+@media screen and (max-width:324px){
     #big_header_text{
         font-size: 38px;
     }
