@@ -11,15 +11,15 @@ let countiesSavedInfo = {
 	counties: []
 };
 
-function determineDataPath() {
-	if (localStorage.getItem('countyItem-' + 0) && true) {
+function determineDataPath(){
+	if (localStorage.getItem('countyItem-' + 0) && true){
 		grabCountyInputs();
-	} else if (localStorage.getItem('stateItem-' + 0) && true) {
+	}else if (localStorage.getItem('stateItem-' + 0) && true){
 		grabStateInputs();
 	}
 };
 function grabCountyInputs() {
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < 4; i++){
 		if (i % 2 == 0) {
 			countiesSavedInfo.states.push(localStorage.getItem('countyItem-' + i))
 			console.log(localStorage.getItem('countyItem-' + i))
@@ -30,10 +30,9 @@ function grabCountyInputs() {
 		}
 
 	}
-	for (let i = 0; i < 2; i++) {
-		grabCountyData(countiesSavedInfo.states[i], countiesSavedInfo.counties[i]);
-	}
-};
+	for (let i = 0; i < 2; i++){
+		grabCountyData( countiesSavedInfo.states[i], countiesSavedInfo.counties[i]);
+}};
 function grabStateInputs() {
 	for (let i = 0; i < 2; i++) {
 		// saving input values for states into an array then running the grabStateData function using said values
@@ -41,12 +40,12 @@ function grabStateInputs() {
 		grabStateData(statesSaved[i]);
 	};
 };
-function grabCountyData(stateTarget, countyTarget) {
+function grabCountyData(stateTarget , countyTarget) {
 	fetch(countyUrl).then((response) => {
 		return response.json();
 	}).then((data) => {
 		return data.filter((el) => el.state === stateTarget).filter((el) => el.county === countyTarget);
-	}).then((dataObj) => {
+		}).then((dataObj) => {
 		console.log(dataObj)
 		let countyTotalCases = dataObj[0].actuals.cases;
 		let countyTotalDeaths = dataObj[0].actuals.deaths;
@@ -315,7 +314,7 @@ function grabStateData(target) {
 		// riskLevel
 		let riskLevel = dataObj.riskLevels.overall
 
-		//DOM Manipulation Here
+	//DOM Manipulation Here
 		// creating +appending information sections to cards
 		let stateCardEL = document.createElement('div');
 		stateCardEL.setAttribute('class', 'state-card-div');
@@ -405,7 +404,7 @@ function grabStateData(target) {
 		riskLevelDiv.appendChild(riskLevelTitle);
 		let riskDisplayWrapper = document.createElement('div');
 		riskDisplayWrapper.setAttribute('id', "risk-wrapper");
-		riskDisplayWrapper.style.display = 'flex';
+		riskDisplayWrapper.style.display ='flex';
 		riskLevelDiv.appendChild(riskDisplayWrapper);
 
 		// for loop creating + appending the risk levels display's divs
@@ -530,16 +529,16 @@ function grabStateData(target) {
 	})
 };
 
-function removeSavedStateInfo() {
+function removeSavedStateInfo(){
 	console.log(2);
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < 4; i++){
 		localStorage.removeItem('stateItem-' + i);
 	}
 };
 
-function removeSavedCountyInfo() {
-	for (let i = 0; i < 8; i++) {
-		localStorage.removeItem('countyItem-' + i)
+function removeSavedCountyInfo(){
+	for (let i = 0; i < 8; i++){
+	localStorage.removeItem('countyItem-' + i)
 	}
 };
 // removeSavedStateInfo();
