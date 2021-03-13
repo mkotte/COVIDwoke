@@ -254,4 +254,37 @@ input[type=text] {
     font-size: 30px;
 }
 
+/* footer styling below*/
+footer{
+
+}
+footer h4{
+
+}
+.creators{
+    display:flex;
+    justify-content: center;
+}
+.creators a{
+    display: inline-block;
+    width:30px;
+    height:30px;
+    background: #222421;
+    margin:5px;
+    border-radius: 30%;
+    box-shadow: 0 4px 10px -4px #a4b5ff59;
+    color:var(--dark);
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+
+}
+
+.symbols{
+
+   font-size:20px;
+
+}
+
+
 /* 600px width breaking point */

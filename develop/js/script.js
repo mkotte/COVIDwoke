@@ -59,7 +59,7 @@ function renderStateOps(event) {
 	stSubmitBtnEl.addEventListener('click', function (event) {
 
 
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 2; i++) {
 			let savedStateInfo = event.target.offsetParent.children[1].childNodes[1][i].textContent;
 			localStorage.setItem('stateItem-' + i, savedStateInfo);
 		}
@@ -137,18 +137,13 @@ function renderCountyOps() {
 		//use event to access user input
 
 
-		for (let m = 0; m < 8; m++) {
+		for (let m = 0; m < 4; m++) {
 			let savedCountyInfo = event.target.offsetParent.children[1].childNodes[1][m].textContent;
 			localStorage.setItem('countyItem-' + m, savedCountyInfo);
 		}
 		location.href = 'develop/html/results.html';
 		//call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 83af71735361cd42c6c6c108b76b1481a56f0b95
 		// renderSearchHistory();
 	});
 };
