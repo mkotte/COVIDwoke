@@ -2,7 +2,7 @@
 
 ## Description
 
-COVID woke seeks to elevate the public information environment by presenting necessary information that is accessible and easy to understand. This application uses third party API's which allow the user to view detailed, regularly updated and complete statistics. To asses the current COVID climate between multiple regions. Our goal is to empower and inspire humans to live with elevated integrity, mindfulness, and respect.
+COVID woke seeks to elevate the public information environment by presenting necessary information that is accessible and easy to understand. This application uses third party API's which allow the user to view detailed, regularly updated and complete statistics. Providing users the ability to easily asses the current COVID climate between multiple regions. Our goal is to empower and inspire humans to live with elevated integrity, mindfulness, and respect.
 
 ## Features
 
