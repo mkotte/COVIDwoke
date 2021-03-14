@@ -2,7 +2,7 @@
 
 ## Description
 
-COVID woke seeks to elevate the public information environment by presenting necessary information that is accessible and easy to understand. This application uses third party API software technology methods which allow the user to view detailed and complete statistics, and the current COVID climate between multiple regions. Our goal is to empower and inspire humans to live with elevated integrity, mindfulness, and respect.
+COVID woke seeks to elevate the public information environment by presenting necessary information that is accessible and easy to understand. This application uses third party API's which allow the user to view detailed, regularly updated and complete statistics. To asses the current COVID climate between multiple regions. Our goal is to empower and inspire humans to live with elevated integrity, mindfulness, and respect.
 
 ## Features
 
@@ -15,5 +15,5 @@ Users are able to search specific states and counties for in-depth information a
 
 ### Links
 
-[DeployedApp(GitHub Pages)](<https://mkotte.github.io/COVIDwoke>)
+[DeployedApp](<https://mkotte.github.io/COVIDwoke>) (GitHub Pages)
 [GitHub Repo](<https://github.com/mkotte/COVIDwoke>)
