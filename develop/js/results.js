@@ -1,3 +1,19 @@
+// ===================
+// Samuel Maddox Notes
+// ===================
+// Long script files Are hard to read. I'd recomend splitting this up into multiple files. This 
+// can aid in readability. If you're not already aware, code that is imported first index.html gets 
+// ran first. Also, code imported later in the index.html file can reference variables and 
+// functions that are defined in previously imported files. It's a good idea to make a comment at 
+// the top of JS files as to what variables/functions it will use from other files, and what those 
+// files are. Later on we'llshow you better ways to make use of multiple JS files.
+
+// NOTE: All code I've provided below has not been tested and may have syntax errors. Use it more
+// as pseudocode trying to get a point across rather than 100% functional code.
+// ===================
+// End Samuel Notes
+// ===================
+
 const apiKey = '74f4b9b4d698466e88f0f73ba927478d';
 const stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
 const stateAbbrv = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
@@ -11,6 +27,16 @@ let countiesSavedInfo = {
 	counties: []
 };
 
+
+// ===================
+// Samuel Maddox Notes
+// ===================
+// I like seeing short function definitions. Short function definitions with meaningful names are 
+// easy to read. I don't have to keep a lot of information about your script in my head. Good job
+// here.
+// ===================
+// End Samuel Notes
+// ===================
 function determineDataPath(){
 	if (localStorage.getItem('countyItem-' + 0) && true){
 		grabCountyInputs();
@@ -40,13 +66,51 @@ function grabStateInputs() {
 		grabStateData(statesSaved[i]);
 	};
 };
+
 function grabCountyData(stateTarget , countyTarget) {
 	fetch(countyUrl).then((response) => {
 		return response.json();
 	}).then((data) => {
 		return data.filter((el) => el.state === stateTarget).filter((el) => el.county === countyTarget);
-		}).then((dataObj) => {
+	}).then((dataObj) => {
+	// ===================
+	// Samuel Maddox Notes
+	// ===================
+	// Now we get to this monstrosity of a function. Lets see if you can shorten this up at all.
+	// When a function gets this big it might be better to have the function act as a manager and
+	// delegate work to smaller functions.
+	// ===================
+	// End Samuel Notes
+	// ===================
 		console.log(dataObj)
+
+	// ===================
+	// Samuel Maddox Notes
+	// ===================
+	// I'd create a function outside of this one that parses the data into something easier for us to 
+	// work with. Then call that function inside this function. The function I'd created I have 
+	//defined below:
+	function paraseCountyData(data) {
+		return {
+			countyTotalCases: dataObj[0].actuals.cases,
+			countyTotalDeaths: dataObj[0].actuals.deaths,
+			countyDailyCases: dataObj[0].actuals.newCases,
+			countyDailyDeaths: dataObj[0].actuals.newDeaths,
+			countyInfectionRate: Number.parseFloat((dataObj[0].metrics.infectionRate).toFixed(2);
+			// ... all other let varibles here
+		}
+	}
+	// This will return a new object that doesn't have so many nested properties, and more meaningful
+	// names, and data that is formated to my liking. I might call this new function in my current 
+	// function like this:
+	const parsedDataObj = paraseCountyData(dataObj);
+	// and I would use that obj as like this:
+	parsedDataObj.countyTotalCases;
+	// ===================
+	// End Samuel Notes
+	// ===================
+
+
 		let countyTotalCases = dataObj[0].actuals.cases;
 		let countyTotalDeaths = dataObj[0].actuals.deaths;
 
@@ -85,6 +149,18 @@ function grabCountyData(stateTarget , countyTarget) {
 
 
 	//DOM Manipulation Here
+	// ===================
+	// Samuel Maddox Notes
+	// ===================
+	// Each one of these DOM Manipulation sections could probably be extracted into their own 
+	// functions, and return an object of DOM elements to be passed to where it's needed next. See me 
+	// in office hours if you want to go over this a little bit more. 
+	//
+	// Also, when we learn React a lot of this hardship will become way simpliar. You'll hate that we
+	// ever had to do things this way.
+	// ===================
+	// End Samuel Notes
+	// ===================
 		// creating +appending information sections to cards
 		let countyCardEL = document.createElement('div');
 		countyCardEL.setAttribute('class', 'state-card-div');
@@ -305,6 +381,14 @@ function grabStateData(target) {
 	}).then((data) => {
 		return data.find((el) => el.state === target);
 	}).then((dataObj) => {
+	// ===================
+	// Samuel Maddox Notes
+	// ===================
+	// The comments I made for grabCountyData() can also apply here.
+	// ===================
+	// End Samuel Notes
+	// ===================
+
 		console.log(dataObj)
 		// STATISTICS
 		// total stats
@@ -448,6 +532,15 @@ function grabStateData(target) {
 		let riskLevelTxtEl = document.createElement('p');
 		riskLevelDiv.appendChild(riskLevelTxtEl);
 
+
+		// ===================
+		// Samuel Maddox Notes
+		// ===================
+		// Look into what a switch statement is. That might be better for this use case for this
+		// if/elseif/else chain
+		// ===================
+		// End Samuel Notes
+		// ===================
 		// If statement to determine display bordering in css + text risk level text
 		if (riskLevel == 5) {
 			riskLevelDescEl.textContent = "Severe outbreak";
@@ -584,3 +677,17 @@ returnButton.addEventListener('click', function(event){
 determineDataPath();
 // grabCountyInputs();
 // grabStateInputs();
+
+
+// ===================
+// Samuel Maddox Notes
+// ===================
+// This is honestly well written code. The gigantic functions is the only red flag I see. And 
+// everything in a single file is also a problem that we didn't provide you a solution too. So be 
+// aware that's a bad practice, but that's not your fault for not knowing yet.
+// 
+// Both of these problems will be more easily fixed when we teach you React, so I wouldn't get
+// into to much of a tizzy over this. Good work on this project. I'm impressed!
+// ===================
+// End Samuel Notes
+// ===================
