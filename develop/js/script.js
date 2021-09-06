@@ -29,8 +29,7 @@ const coInputTxtEl = document.querySelectorAll('.co_input_txt');
 //couty dropdown options
 //state selected is state value for county dropdown
 
-//TODO: add event listeners for state and county modals
-
+// event listeners for state and county modals
 function renderStateOps(event) {
 	event.preventDefault()
 	for (let i = 0; i < stateDropdownEl.length; i++) {
@@ -92,9 +91,6 @@ function renderCountyOps() {
 
 			coStOptions.addEventListener('click', function (event) {
 				let coStateSelected = event.target.textContent;
-
-				//regain value of i in scope
-				// let l = i;
 
 				event.target.parentNode.previousSibling.previousSibling.innerHTML = coStateSelected;
 
