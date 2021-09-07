@@ -13,17 +13,46 @@
     <title>COVID Woke</title>
 </head>
 
+<!-- =================== -->
+<!-- Samuel Maddox Notes -->
+<!-- =================== -->
+<!-- 
+    The changes I make below might break the app if you have styles or scripts that rely on tags 
+    being divs. Some tags will require further styles to overwrite defaults.
+
+    Good job on indentation and making some use of semantic tags. 
+-->
+<!-- =================== -->
+<!-- End Samuel Notes    -->
+<!-- =================== -->
+
 <body class="row">
     <header class="jumbotron-fluid">
         <div class="header_wrapper">
             <h1 class="display-3" id="big_header_text"><img id="covid-vector"
                     src="./assets/images/covid_vector.png">OVID <span id="woke-header-txt">woke</span></h1>
+            <!-- =================== -->
+            <!-- Samuel Maddox Notes -->
+            <!-- =================== -->
+            <!-- Is this p tag needed? -->
+            <!-- =================== -->
+            <!-- End Samuel Notes    -->
+            <!-- =================== -->
             <p class="lead" id="sm_header_text"></p>
         </div>
         <hr class="mt-0 mb-0">
     </header>
     <main class="container-fluid" id="">
-        <div class="mission_wrapper row">
+
+
+        <!-- =================== -->
+        <!-- Samuel Maddox Notes -->
+        <!-- =================== -->
+        <!-- Use of the section tag might be more semantic -->
+        <!-- =================== -->
+        <!-- End Samuel Notes    -->
+        <!-- =================== -->
+        <section class="mission_wrapper row">
             <div class="mission_header_wrapper col-lg-1 col-md-12 col-sm-12">
                 <h1 class="mission_header">Mission</h1>
             </div>
@@ -35,16 +64,23 @@
                     Our goal is to empower and inspire humans to live with elevated integrity, mindfulness, and respect.
                 </p>
             </div>
-        </div>
+        </section>
 
-        <div class="travel_advisory_container row">
+        <section class="travel_advisory_container row">
+            <!-- =================== -->
+            <!-- Samuel Maddox Notes -->
+            <!-- =================== -->
+            <!-- I feel like this div could be a p tag, or maybe one of the h1-h6 tags -->
+            <!-- =================== -->
+            <!-- End Samuel Notes    -->
+            <!-- =================== -->
             <!-- bootstrap alert for travel advisory / add alert message and cdc link etc-->
-            <div class="alert alert-danger" role="alert">
+            <h2 class="alert alert-danger" role="alert">
                 Learn about <a href="https://www.cdc.gov/coronavirus/2019-ncov/travelers/travel-during-covid19.html" class="alert-link">CDC Travel</a> recommendations and tips to stay safe during the COVID-19 pandemic.
-            </div>
-        </div>
+            </h2>
+        </section>
 
-        <div class="appreciation_box_wrapper row">
+        <section class="appreciation_box_wrapper row">
             <div class="background_img_screen col-sm-12">
 
                 <div class="search_bar_wrapper row">
@@ -69,7 +105,7 @@
                     <p class="appreciation_text" id="app_text_bottom">Front Line Workers</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Footer with contact info-->
         <footer>
@@ -105,18 +141,76 @@
                     <form class="row">
                         <!-- FIRST SELECTION (required)-->
                         <div class="form-group col">
+                            <!-- =================== -->
+                            <!-- Samuel Maddox Notes -->
+                            <!-- =================== -->
+                            <!-- 
+                                I'm wondering if this div is needed? The class attribute I don't 
+                                think is since it's an empty string. Styles being applied to this 
+                                div might be able to be applied to the above div instead. I also
+                                may be missing something.
+                            -->
+                            <!-- =================== -->
+                            <!-- End Samuel Notes    -->
+                            <!-- =================== -->
                             <div class="">
                                 <label for="state-name-input" class="col-form-label"></label>
                                 <div class="dropdown">
+                                    <!-- =================== -->
+                                    <!-- Samuel Maddox Notes -->
+                                    <!-- =================== -->
+                                    <!-- 
+                                        I feel the select element would be a better choice here 
+                                        then a button/div mixed with JS. Bootstrap has some decent
+                                        <select> tag styles. Maybe you wanted more customization and
+                                        that's why you went this route? I know custom styling for
+                                        select tags are very tricky to get right across browsers,
+                                        sometimes necessitating hacky solutions. Be sure to balance
+                                        the needs for visual UX designs with accesibility where
+                                        needed.
+                                    -->
+                                    <!-- =================== -->
+                                    <!-- End Samuel Notes    -->
+                                    <!-- =================== -->
                                     <button class="btn btn-secondary dropdown-toggle state_input_txt" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         State
                                     </button>
-                                    <div class="dropdown-menu state-dropdown" id=""
+                                    <!-- =================== -->
+                                    <!-- Samuel Maddox Notes -->
+                                    <!-- =================== -->
+                                    <!-- 
+                                        This is ultimatley an ordered list of states. I think an 
+                                        <ol> tag would be better here instead of the div. More 
+                                        styling will be need to get rid of the default list styling, 
+                                        but it's more semantic. You'll also need to wrap children
+                                        in <li> tags.
+                                    -->
+                                    <!-- =================== -->
+                                    <!-- End Samuel Notes    -->
+                                    <!-- =================== -->
+                                    <ol class="dropdown-menu state-dropdown" id=""
                                         aria-labelledby="dropdownMenuButton">
+                                        <!-- =================== -->
+                                        <!-- Samuel Maddox Notes -->
+                                        <!-- =================== -->
+                                        <!-- 
+                                            I know you're populating this section with <a> tags. 
+                                            I wouldn't use <a> tags here since they  don't take you
+                                            to a different page or different section on this page. 
+                                            Ignoring my advice to use the <select> and <option> tags
+                                            I would suggest using button tags that are styled to
+                                            not look like buttons. Also, because you use <a> tags 
+                                            with href="#", it causes the page to jump if the user 
+                                            scrolled down before clicking the search by state
+                                            button.
+                                        -->
+                                        <!-- =================== -->
+                                        <!-- End Samuel Notes    -->
+                                        <!-- =================== -->
                                         <!-- <a class="dropdown-item" href="#">State</a>-->
-                                    </div>
+                                    </ol>
                                 </div>
                             </div>
 
@@ -139,6 +233,19 @@
                             </div>
 
                         </div>
+                        <!-- =================== -->
+                        <!-- Samuel Maddox Notes -->
+                        <!-- =================== -->
+                        <!-- 
+                            I'm assuming commented out code here is saved for future features? If
+                            so it's better to leave that code behind on a feature branch. It's 
+                            considered bad practice to commit commented code into a shared or 
+                            release branch, though there may be exceptions here and there.
+                        -->
+                        <!-- =================== -->
+                        <!-- End Samuel Notes    -->
+                        <!-- =================== -->
+
                         <!-- THIRD SELECTION
                         <div class="form-group col">
                             <div class="">

@@ -1,3 +1,17 @@
+/* =================== */
+/* Samuel Maddox Notes */
+/* =================== */
+/*
+    Maybe a personal preference, but i'd move the css folder out of the develop folder and into
+    the assets folder. Same for the js folder. The html folder I would have those html files moved
+    into the root folder. If you start to get too many html files in the project root then you can
+    create sub folders that are named based on website sections. This makes the url more 
+    readable/memorable.
+*/
+/* =================== */
+/* End Samuel Notes    */
+/* =================== */
+
 :root{
     --accent-color: #2CBDF6;
     --primary-txt: #FFFFFF;
@@ -291,6 +305,23 @@ footer div :nth-child(4){
 footer div :nth-child(3){
     margin-right:25px;
 }
+
+/* =================== */
+/* Samuel Maddox Notes */
+/* =================== */
+/*
+    It is recomended that the above styles be set for how the page should work on mobile, and then
+    using meia queries to have the styles change as the page grows into the desktop version.
+    Use min-width instead of max-width, bring above styles down into the quries and bring the below 
+    styles up outside of the quries. Also, if a style is specified above it doesn't need specified 
+    below. EX: the .mission_text_wrapper class has the 'position: relative' style applied above. 
+    It doesn't need to be specified again in these media queries if it never changes value on screen
+    size. However, you are correct that the 'right: 45px` needs to be added as that style changes
+    with the screen.
+*/
+/* =================== */
+/* End Samuel Notes    */
+/* =================== */
 
 @media screen and (max-width: 1660px){
     .mission_text_wrapper{
