@@ -1,3 +1,4 @@
+
 let apiKey = '74f4b9b4d698466e88f0f73ba927478d';
 let stateUrl = 'https://api.covidactnow.org/v2/states.json?apiKey=' + apiKey;
 let stateAbbrvArray = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
@@ -7,13 +8,10 @@ let countyUrl = "https://api.covidactnow.org/v2/counties.json?apiKey=" + apiKey;
 const stSearchBtnEl = document.querySelector('#search-state-btn');
 const coSearchBtnEl = document.querySelector('#search-county-btn');
 
-
 //STATE MODAL button + input field
 const stSubmitBtnEl = document.querySelector('#st-submit-btn');
 const stateDropdownEl = document.querySelectorAll('.state-dropdown');
 const stInputTxtEl = document.querySelectorAll('.state_input_txt');
-
-console.log(stateDropdownEl);
 
 //COUNTY MODAL buttons + input field
 const coSubmitBtnEl = document.querySelector('#co-submit-btn');
@@ -22,19 +20,16 @@ const countyDropdownEl = document.querySelectorAll('.county-dropdown');
 const coStInputTxtEl = document.querySelectorAll('.co_state_input_txt');
 const coInputTxtEl = document.querySelectorAll('.co_input_txt');
 
+// on click of state and couty modals
+// use state abbrev variable to populate state dropdowns
 
-//TODO: on click of state and couty modals
-//use state abbrev variable to populate state dropdowns
-
-//couty dropdown options
-//state selected is state value for county dropdown
+// couty dropdown options
+// state selected is state value for county dropdown
 
 // event listeners for state and county modals
 function renderStateOps(event) {
 	event.preventDefault()
 	for (let i = 0; i < stateDropdownEl.length; i++) {
-
-		console.log(stateDropdownEl[i]);
 
 		for (let j = 0; j < stateAbbrvArray.length; j++) {
 
@@ -54,7 +49,7 @@ function renderStateOps(event) {
 			stateDropdownEl[i].appendChild(stOptions);
 		}
 	}
-	//event listener for SUBMIT STATE modal
+	// event listener for SUBMIT STATE modal
 	stSubmitBtnEl.addEventListener('click', function (event) {
 
 
@@ -66,7 +61,7 @@ function renderStateOps(event) {
 
 		// saveStatesSelected.forEach(function (userState, index) {
 
-		//call function to render search history within this function for access to needed variables
+		// call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
 
 		// renderSearchHistory();
@@ -77,7 +72,6 @@ function renderStateOps(event) {
 function renderCountyOps() {
 
 	for (let i = 0; i < coStateDropdownEl.length; i++) {
-
 
 		for (let j = 0; j < stateAbbrvArray.length; j++) {
 
@@ -99,11 +93,11 @@ function renderCountyOps() {
 					return response.json()
 				}).then((data) => {
 
-					//counties to populate dropdown
+					// counties to populate dropdown
 					let counties = data.map((countyData) => countyData.county);
 					console.log(counties);
 
-					//append a tag as options for the dropdown
+					// append a tag as options for the dropdown
 					for (let k = 0; k < counties.length; k++) {
 
 						let coOptions = document.createElement('a');
@@ -111,7 +105,6 @@ function renderCountyOps() {
 						coOptions.setAttribute('href', '#');
 						coOptions.textContent = counties[k];
 
-						console.log(countyDropdownEl, i)
 						countyDropdownEl[i].appendChild(coOptions);
 
 						coOptions.addEventListener('click', function (event) {
@@ -120,25 +113,23 @@ function renderCountyOps() {
 							// coInputTxtEl.innerHTML = countySelected;
 							event.target.parentNode.previousSibling.previousSibling.innerHTML = countySelected;
 						})
-
 					}
 				})
 			})
 		}
 	}
-	//event listener SUBMIT COUNTY modal
+	// event listener SUBMIT COUNTY modal
 	coSubmitBtnEl.addEventListener('click', function (event) {
 		event.preventDefault();
 
-		//use event to access user input
-
+		// use event to access user input
 
 		for (let m = 0; m < 4; m++) {
 			let savedCountyInfo = event.target.offsetParent.children[1].childNodes[1][m].textContent;
 			localStorage.setItem('countyItem-' + m, savedCountyInfo);
 		}
 		location.href = 'develop/html/results.html';
-		//call function to render search history within this function for access to needed variables
+		// call function to render search history within this function for access to needed variables
 		// savedSearchArray.push(userInput);
 		// renderSearchHistory();
 	});
